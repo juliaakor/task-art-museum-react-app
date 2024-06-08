@@ -1,18 +1,22 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
-const commonConfig = require("./webpack.config");
-const {merge} = require("webpack-merge");
+const commonConfig = require('./webpack.config');
+const { merge } = require('webpack-merge');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(commonConfig, {
-  mode: "development",
-  devtool: 'inline-source-map',
-  output: {
-    filename: 'js/[name].bundle.js',
-    chunkFilename: 'js/[name].bundle.js',
-    assetModuleFilename: "css/[name][ext]",
+  devServer: {
+    compress: true,
+    historyApiFallback: true,
+    host: 'localhost',
+    hot: true,
+    open: true,
+    port: 3000,
   },
+  devtool: 'inline-source-map',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -30,18 +34,15 @@ module.exports = merge(commonConfig, {
       },
     ]
   },
-  devServer: {
-    host: 'localhost',
-    historyApiFallback: true,
-    port: 3000,
-    open: true,
-    hot: true,
-    compress: true,
+  output: {
+    assetModuleFilename: 'css/[name][ext]',
+    chunkFilename: 'js/[name].bundle.js',
+    filename: 'js/[name].bundle.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'public', 'index.html'),
       showErrors: true,
+      template: path.join(__dirname, 'public', 'index.html'),
     }),
   ],
 })

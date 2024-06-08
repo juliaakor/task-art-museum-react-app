@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
@@ -7,22 +8,11 @@ module.exports = {
   entry: {
     index: path.join(__dirname, 'src', 'index.tsx'),
   },
-  resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
-    plugins: [
-      new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })
-    ]
-  },
-  output: {
-    publicPath: '/',
-    path: path.resolve(__dirname, 'build'),
-    clean: true,
-  },
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
+        test: /\.(ts|tsx)$/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -31,8 +21,8 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|svg|jp(e*)g|gif|ico|webp|avif)$/,
         exclude: /node_modules/,
+        test: /\.(png|svg|jp(e*)g|gif|ico|webp|avif)$/,
         use: {
           loader: 'file-loader',
           options: {
@@ -42,7 +32,18 @@ module.exports = {
       },
     ]
   },
+  output: {
+    clean: true,
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
+  },
   plugins: [
     new MiniCssExtractPlugin(),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    plugins: [
+      new TsconfigPathsPlugin({ configFile: './tsconfig.json' })
+    ]
+  },
 };

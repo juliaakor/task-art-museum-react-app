@@ -1,0 +1,53 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "settings": {
+    "react": {
+        "version": "detect"
+    }
+},
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "perfectionist"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:perfectionist/recommended-natural"
+  ],
+  "rules": {
+    "array-bracket-spacing": "error",
+    "arrow-spacing": "error",
+    "prefer-const": "error",
+    "no-duplicate-case":"error",
+    "object-curly-spacing": ["error", "always"],
+    "no-unused-vars": [
+      "error", {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ],
+    "indent": ["error", 2],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": false,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "newline-before-return": "error",
+    "perfectionist/sort-objects": [
+      "error",
+      {
+        "type": "natural",
+        "order": "asc"
+      }
+    ],
+    "no-console": "error",
+    "no-debugger": "error"
+  }
+}

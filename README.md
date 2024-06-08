@@ -33,3 +33,5 @@ At the moment, the following scripts can be run within the project:
 - dev - launch the application in development mode;
 - clean - delete the build folder and all its files using rm;
 - clean:npm - delete the node_modules folder and all its files with rm;
+- lint - check for all the existing eslint errors and warnings in the files
+- lint:fix - fix all eslint errors and warnings available for fixing
