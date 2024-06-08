@@ -8,6 +8,13 @@
   },
   "description": "",
   "main": "index.tsx",
+  "scripts": {
+    "start": "webpack serve --mode production --open",
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "clean": "rm -r ./build",
+    "clean:npm": "rm -r node_modules"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
