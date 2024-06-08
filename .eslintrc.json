@@ -1,0 +1,45 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "plugins": ["@typescript-eslint", "perfectionist"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:perfectionist/recommended-natural"
+  ],
+  "rules": {
+    "array-bracket-spacing": "error",
+    "arrow-spacing": "error",
+    "prefer-const": "error",
+    "no-duplicate-case":"error",
+    "no-unused-vars": [
+      "error", {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ],
+    "indent": ["error", 2],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": false,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "newline-before-return": "error",
+    "perfectionist/sort-objects": [
+      "error",
+      {
+        "type": "natural",
+        "order": "asc"
+      }
+    ],
+    "no-console": "error",
+    "no-debugger": "error"
+  }
+}
