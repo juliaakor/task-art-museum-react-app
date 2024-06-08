@@ -17,8 +17,8 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-          }
-        }
+          },
+        },
       },
       {
         exclude: /node_modules/,
@@ -26,24 +26,20 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: 'images/[name].[ext]'
-          }
-        }
+            name: 'images/[name].[ext]',
+          },
+        },
       },
-    ]
+    ],
   },
   output: {
     clean: true,
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-  ],
+  plugins: [new MiniCssExtractPlugin()],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    plugins: [
-      new TsconfigPathsPlugin({ configFile: './tsconfig.json' })
-    ]
+    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
   },
 };

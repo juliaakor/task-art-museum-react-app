@@ -6,31 +6,45 @@
   },
   "settings": {
     "react": {
-        "version": "detect"
+      "version": "detect"
     }
-},
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "perfectionist"],
+  },
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "perfectionist", "prettier"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:perfectionist/recommended-natural"
+    "plugin:perfectionist/recommended-natural",
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "array-bracket-spacing": "error",
     "arrow-spacing": "error",
     "prefer-const": "error",
-    "no-duplicate-case":"error",
+    "no-duplicate-case": "error",
     "object-curly-spacing": ["error", "always"],
     "no-unused-vars": [
-      "error", {
+      "error",
+      {
         "vars": "all",
         "args": "after-used",
         "ignoreRestSiblings": false
       }
     ],
     "indent": ["error", 2],
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 120,
+        "tabWidth": 2,
+        "semi": true,
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "arrowParens": "always"
+      }
+    ],
     "quotes": [
       "error",
       "single",
