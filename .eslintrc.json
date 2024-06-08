@@ -6,9 +6,9 @@
   },
   "settings": {
     "react": {
-        "version": "detect"
+      "version": "detect"
     }
-},
+  },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "perfectionist", "prettier"],
   "extends": [
     "eslint:recommended",
@@ -22,10 +22,11 @@
     "array-bracket-spacing": "error",
     "arrow-spacing": "error",
     "prefer-const": "error",
-    "no-duplicate-case":"error",
+    "no-duplicate-case": "error",
     "object-curly-spacing": ["error", "always"],
     "no-unused-vars": [
-      "error", {
+      "error",
+      {
         "vars": "all",
         "args": "after-used",
         "ignoreRestSiblings": false

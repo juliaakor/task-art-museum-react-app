@@ -28,11 +28,11 @@ module.exports = merge(commonConfig, {
             options: {
               importLoaders: 1,
               modules: true,
-            }
+            },
           },
-        ]
+        ],
       },
-    ]
+    ],
   },
   output: {
     assetModuleFilename: 'css/[name][ext]',
@@ -45,4 +45,4 @@ module.exports = merge(commonConfig, {
       template: path.join(__dirname, 'public', 'index.html'),
     }),
   ],
-})
+});

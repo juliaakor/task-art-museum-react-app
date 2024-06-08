@@ -21,11 +21,11 @@ module.exports = merge(commonConfig, {
             options: {
               importLoaders: 1,
               modules: true,
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
-    ]
+    ],
   },
   output: {
     assetModuleFilename: 'css/[name][chunkhash][ext]',
@@ -38,6 +38,6 @@ module.exports = merge(commonConfig, {
       hash: true,
       minify: true,
       template: path.join(__dirname, 'public', 'index.html'),
-    })
+    }),
   ],
-})
+});
