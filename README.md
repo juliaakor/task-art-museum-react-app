@@ -5,8 +5,11 @@
 After cloning the repo, consult `package.json` for the requirements with regard to nodejs and yarn versions.
 Install dependencies with:
 
+Install dependencies and setup husky hooks with:
+
 ```bash
 yarn
+yarn prepare
 ```
 
 Run the development server with:
@@ -38,5 +41,6 @@ At the moment, the following scripts can be run within the project:
 - `lint:fix` - fix all eslint errors and warnings available for fixing
 - `prettier` - check for all code style issues in files
 - `prettier:fix` - fix all the code style issues in files
+- `prepare` - to setup husky hooks
 
 **Note**: The following commands use the `.gitignore` file instead of their own ignore file: `lint`, `lint:fix`, `prettier`, `prettier:fix`.
