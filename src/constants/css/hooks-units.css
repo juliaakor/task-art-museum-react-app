@@ -1,0 +1,24 @@
+:root {
+  --c-spacing-xxx-small: 0.25rem;
+  --c-spacing-xx-small: 0.5rem;
+  --c-spacing-x-small: 0.625rem;
+  --c-spacing-small: 0.75rem;
+  --c-spacing-none: 0;
+  --c-spacing-medium: 1rem;
+  --c-spacing-x-medium: 1.219rem;
+  --c-spacing-xx-medium: 1.625rem;
+  --c-spacing-xxx-medium: 2.5rem;
+  --c-spacing-large: 3.719rem;
+  --c-spacing-x-large: 4.5rem;
+  --c-spacing-xx-large: 5rem;
+  --c-spacing-xxx-large: 7.5rem;
+
+  --c-size-xxx-small: 3.719rem;
+  --c-size-xx-small: 4.5rem;
+  --c-size-x-small: 5rem;
+  --c-size-small: 7.5rem;
+  --c-size-medium: 20rem;
+  --c-size-large: 25rem;
+  --c-size-x-large: 40rem;
+  --c-size-xx-large: 60rem;
+}
