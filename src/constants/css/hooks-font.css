@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend+Deca:wght@100..900&display=swap');
+
+:root {
+  --c-font-weight-thin: 300;
+  --c-font-weight-regular: 400;
+  --c-font-weight-medium: 500;
+  --c-font-weight-semi-bold: 600;
+  --c-font-weight-bold: 700;
+
+  --c-font-family-heading: 'Lexend Deca';
+  --c-font-family-label: 'Inter';
+
+  --c-font-size-1: 0.875rem;
+  --c-font-size-2: 1rem;
+  --c-font-size-3: 1.096rem;
+  --c-font-size-4: 1.125rem;
+  --c-font-size-5: 1.5rem;
+  --c-font-size-6: 2rem;
+  --c-font-size-7: 4rem;
+
+  --c-line-height-reset: 1;
+  --c-line-height-text-1: 1.21rem;
+  --c-line-height-text-2: 1.25rem;
+  --c-line-height-text-3: 1.361rem;
+  --c-line-height-text-4: 1.438rem;
+  --c-line-height-text-5: 1.5rem;
+  --c-line-height-text-6: 1.645rem;
+  --c-line-height-text-7: 1.875rem;
+  --c-line-height-text-8: 2.5rem;
+  --c-line-height-text-9: 5rem;
+}
