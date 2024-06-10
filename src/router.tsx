@@ -3,6 +3,10 @@ import { DetailInfoPage, ErrorPage, FavoritesPage, HomePage, NotFoundPage } from
 
 export const router = [
   {
+    Component: NotFoundPage,
+    path: ROUTES.NOT_FOUND,
+  },
+  {
     Component: HomePage,
     path: ROUTES.HOME,
   },
@@ -13,10 +17,6 @@ export const router = [
   {
     Component: DetailInfoPage,
     path: ROUTES.DETAIL_INFO,
-  },
-  {
-    Component: NotFoundPage,
-    path: ROUTES.NOT_FOUND,
   },
   {
     Component: ErrorPage,
