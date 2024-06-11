@@ -1,5 +1,5 @@
 export const ROUTES = {
-  DETAIL_INFO: 'detail-info',
+  DETAIL_INFO: '/:id',
   ERROR_OCCURRED: 'error-occurred',
   FAVORITES: 'favorites',
   HOME: '/',
