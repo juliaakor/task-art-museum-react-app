@@ -4,4 +4,5 @@ export { BurgerMenuIcon } from './burgerMenuIcon';
 export { HomeIcon } from './homeIcon';
 export { ModsenLogoIcon } from './modsenLogoIcon';
 export { MuseumLogoIcon } from './museumLogoIcon';
+export { NotFoundIcon } from './notFoundIcon';
 export { SearchIcon } from './searchIcon';
