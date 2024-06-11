@@ -30,3 +30,8 @@ export const SearchError = styled.span`
   margin: var(--c-spacing-x-small);
   font-size: var(--c-font-weight-thin);
 `;
+
+export const CardListWrapper = styled.div`
+  margin: var(--c-spacing-x-medium) auto;
+  width: 85%;
+`;
