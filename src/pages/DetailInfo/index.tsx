@@ -3,7 +3,7 @@ import { Loader } from '@components/Loader';
 import { Overview } from '@components/Overview';
 import { SubHeading } from '@constants/css';
 import { ROUTES } from '@constants/routes';
-import { getPaintingImageUrl } from '@utils/api';
+import { getPaintingDetailsByIdUrl, getPaintingImageUrl } from '@utils/api';
 import { FullPaintingInfoSchema, FullPaintingInfoType } from '@utils/yup';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -27,7 +27,7 @@ export const DetailInfoPage = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`https://api.artic.edu/api/v1/artworks/${id}`);
+        const response = await fetch(`${getPaintingDetailsByIdUrl(id)}`);
         const fetchedData = await response.json();
 
         const validatedData = await FullPaintingInfoSchema.validate(fetchedData.data, { stripUnknown: true });
