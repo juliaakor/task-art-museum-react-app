@@ -42,16 +42,6 @@ export const CardStatus = styled.span`
   font-weight: var(--c-font-weight-bold);
 `;
 
-export const IconWrapper = styled.span`
-  background: var(--c-palette-color-white-3);
-  border-radius: 35px;
-  padding: var(--c-spacing-medium);
-
-  &:hover {
-    background: var(--c-palette-color-orange-3-30);
-  }
-`;
-
 const Painting = css`
   width: var(--c-size-x-small);
   height: var(--c-size-x-small);
