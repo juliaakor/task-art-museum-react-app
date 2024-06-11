@@ -1,3 +1,4 @@
+import { CardList } from '@components/CardList';
 import { SearchIcon } from '@components/Icons';
 import { Input } from '@components/common';
 import { getBaseApiUrl } from '@utils/api';
@@ -79,6 +80,16 @@ export const Search = ({ children, initialValues, placeholder, validationSchema 
             />
             {children}
           </SearchWrapper>
+          <CardListWrapper>
+            {searchResults && (
+              <CardList
+                data={searchResults.data}
+                isFullSize={false}
+                pagination={searchResults.pagination}
+                query={query}
+              />
+            )}
+          </CardListWrapper>
         </Form>
       )}
     </Formik>
