@@ -6,6 +6,10 @@ export const CardContainer = styled.div`
   width: max-content;
   ${FlexVerticalCenter}
   flex-direction: column;
+
+  &:hover {
+    box-shadow: 0px 17px 39px -7px var(--c-palette-color-orange-2);
+  }
 `;
 
 export const Painting = styled.img`

@@ -1,4 +1,5 @@
 import { BookmarkIcon, NotFoundIcon } from '@components/Icons';
+import { IconButtonWrapper } from '@constants/css';
 import { getPaintingImageUrl } from '@utils/api';
 import React, { useState } from 'react';
 
@@ -7,7 +8,6 @@ import {
   CardInfo,
   CardStatus,
   CardTitle,
-  IconWrapper,
   PaintingDefaultWrapper,
   PaintingImage,
   PreviewCardContainer,
@@ -47,6 +47,8 @@ export const PreviewCard = ({
     setisImageLoaded(false);
   };
 
+  const handleBookmarkClick = () => {};
+
   return (
     <PreviewCardContainer {...(isFullSize ? FullSizeCardDefaults : MiniSizeCardDefaults)}>
       {!isFullSize && isImageLoaded ? (
@@ -64,9 +66,9 @@ export const PreviewCard = ({
         <CardArtist>{artist_title || 'Unknown'}</CardArtist>
         <CardStatus>{is_public_domain ? 'Public' : 'Private'}</CardStatus>
       </CardInfo>
-      <IconWrapper>
+      <IconButtonWrapper onClick={() => handleBookmarkClick()}>
         <BookmarkIcon key={id} size={24} />
-      </IconWrapper>
+      </IconButtonWrapper>
     </PreviewCardContainer>
   );
 };
