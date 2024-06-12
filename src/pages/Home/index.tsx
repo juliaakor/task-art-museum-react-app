@@ -1,12 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
+import { Card } from '@components/Card';
 import { CardList } from '@components/CardList';
 import { Loader } from '@components/Loader';
 import { Search } from '@components/Search';
 import { Section } from '@components/Section';
 import { API } from '@constants/api';
-import { PageHeading, TextHighlightWrapper } from '@constants/css';
+import { CardWrapper, PageHeading, TextHighlightWrapper } from '@constants/css';
 import React, { useEffect, useState } from 'react';
-import { PaintingsListType } from 'types';
+import { PaintingCardInfoType, PaintingsListType } from 'types';
 import * as Yup from 'yup';
 
 import { CardListWrapper, SearchWrapper } from './styled';
@@ -25,15 +26,25 @@ const initialValues: SearchFormValues = {
 
 export const HomePage = () => {
   const [data, setData] = useState<PaintingsListType | null>(null);
+  const [rest, setRest] = useState<PaintingsListType | null>(null);
 
   useEffect(() => {
-    const getData = async () => {
-      const response = await fetch(`${API.baseURL}?limit=3`);
+    const getData = async (limit = 3) => {
+      const response = await fetch(`${API.baseURL}?limit=${limit}`);
       const data = await response.json();
-      setData(data);
+
+      return data;
     };
 
-    getData();
+    const fetchData = async () => {
+      const data = await getData();
+      setData(data);
+
+      const restData = await getData(9);
+      setRest(restData);
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -53,7 +64,14 @@ export const HomePage = () => {
           {data ? <CardList data={data.data} pagination={data.pagination} /> : <Loader />}
         </CardListWrapper>
       </Section>
-      <Section info="Here some more" title="Other works for you"></Section>
+      <Section info="Here some more" title="Other works for you">
+        <CardWrapper>
+          {rest &&
+            rest.data.map((painting: PaintingCardInfoType) => (
+              <Card isFullSize={false} key={painting.id} painting={painting} />
+            ))}
+        </CardWrapper>
+      </Section>
     </>
   );
 };

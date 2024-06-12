@@ -37,11 +37,13 @@ export const TextHighlightWrapper = styled.span<TextHighlightWrapperProps>`
 `;
 
 export const ErrorContainer = styled.div`
-  height: 90vh;
+  height: 70vh;
   ${FlexVerticalCenter}
   flex-direction: column;
   justify-content: center;
   gap: var(--c-spacing-x-small);
+  width: 30%;
+  margin: 5% auto;
 `;
 
 export const ErrorHeading = styled.h1`
@@ -50,4 +52,13 @@ export const ErrorHeading = styled.h1`
 
 export const ErrorDescription = styled.p`
   font-size: var(--c-font-size-5);
+`;
+
+export const CardWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--c-spacing-large);
+  margin: 0 0 var(--c-spacing-large) 0;
 `;
