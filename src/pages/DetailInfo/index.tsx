@@ -3,9 +3,12 @@ import { Loader } from '@components/Loader';
 import { Overview } from '@components/Overview';
 import { SubHeading } from '@constants/css';
 import { ROUTES } from '@constants/routes';
+import { deletePainting, savePainting } from '@store/actions';
 import { getPaintingDetailsByIdUrl, getPaintingImageUrl } from '@utils/api';
+import { useBookmarkStatus } from '@utils/hooks';
 import { FullPaintingInfoSchema, FullPaintingInfoType } from '@utils/yup';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import {
@@ -19,15 +22,18 @@ import {
 } from './styled';
 
 export const DetailInfoPage = () => {
-  const { id } = useParams();
+  const { id: stringId } = useParams();
+  const id = Number(stringId);
   const navigate = useNavigate();
+  const [isBookmarked, toggleBookmark] = useBookmarkStatus(id);
+  const dispatch = useDispatch();
 
-  const [data, setData] = useState<FullPaintingInfoType | null>(null);
+  const [data, setData] = useState<FullPaintingInfoType>();
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`${getPaintingDetailsByIdUrl(id)}`);
+        const response = await fetch(`${getPaintingDetailsByIdUrl(stringId)}`);
         const fetchedData = await response.json();
 
         const validatedData = await FullPaintingInfoSchema.validate(fetchedData.data, { stripUnknown: true });
@@ -39,9 +45,25 @@ export const DetailInfoPage = () => {
     };
 
     getData();
-  }, [id, navigate]);
+  }, [id, navigate, stringId]);
 
-  const handleBookmarkClick = () => {};
+  const handleBookmarkClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    if (isBookmarked) {
+      dispatch(deletePainting(id));
+    } else {
+      dispatch(
+        savePainting({
+          artist_title: data?.artist_title || '',
+          id,
+          image_id: data?.image_id || '',
+          is_public_domain: data?.is_public_domain || false,
+          title: data?.title || '',
+        })
+      );
+    }
+    toggleBookmark();
+  };
 
   return (
     <DetailsContainer>
@@ -49,8 +71,10 @@ export const DetailInfoPage = () => {
         <>
           <PaintingWrapper>
             <PaintingImage src={getPaintingImageUrl(data.image_id)} />
-            <ButtonWrapper onClick={() => handleBookmarkClick()}>
-              <BookmarkIcon />
+            <ButtonWrapper onClick={handleBookmarkClick}>
+              <BookmarkIcon
+                color={isBookmarked ? 'var(--c-palette-color-green-1)' : 'var(--c-palette-color-orange-2)'}
+              />
             </ButtonWrapper>
           </PaintingWrapper>
           <OverviewContainer>

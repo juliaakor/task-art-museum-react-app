@@ -1,7 +1,10 @@
+import { deletePainting, savePainting } from '@/store/actions';
 import { BookmarkIcon, NotFoundIcon } from '@components/Icons';
 import { IconButtonWrapper } from '@constants/css';
 import { getPaintingImageUrl } from '@utils/api';
+import { useBookmarkStatus } from '@utils/hooks';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import {
   CardArtist,
@@ -43,11 +46,22 @@ export const PreviewCard = ({
   title,
 }: PreviewCardProps) => {
   const [isImageLoaded, setisImageLoaded] = useState(true);
+  const [isBookmarked, toggleBookmark] = useBookmarkStatus(id);
+  const dispatch = useDispatch();
+
   const handleImgError = () => {
     setisImageLoaded(false);
   };
 
-  const handleBookmarkClick = () => {};
+  const handleBookmarkClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    if (isBookmarked) {
+      dispatch(deletePainting(id));
+    } else {
+      dispatch(savePainting({ artist_title, id, image_id, is_public_domain, title }));
+    }
+    toggleBookmark();
+  };
 
   return (
     <PreviewCardContainer {...(isFullSize ? FullSizeCardDefaults : MiniSizeCardDefaults)}>
@@ -66,8 +80,12 @@ export const PreviewCard = ({
         <CardArtist>{artist_title || 'Unknown'}</CardArtist>
         <CardStatus>{is_public_domain ? 'Public' : 'Private'}</CardStatus>
       </CardInfo>
-      <IconButtonWrapper onClick={() => handleBookmarkClick()}>
-        <BookmarkIcon key={id} size={24} />
+      <IconButtonWrapper onClick={handleBookmarkClick}>
+        <BookmarkIcon
+          color={isBookmarked ? 'var(--c-palette-color-green-1)' : 'var(--c-palette-color-orange-2)'}
+          key={id}
+          size={24}
+        />
       </IconButtonWrapper>
     </PreviewCardContainer>
   );

@@ -1,11 +1,17 @@
+import { Card } from '@components/Card';
 import { BookmarkIcon } from '@components/Icons';
 import { Section } from '@components/Section';
 import { PageHeading, TextHighlightWrapper as TextHighlight } from '@constants/css';
+import { RootState } from '@store/reducers';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { PaintingCardInfoType } from 'types';
 
-import { TextHighlightWrapper } from './styled';
+import { CardWrapper, TextHighlightWrapper } from './styled';
 
 export const FavoritesPage = () => {
+  const paintings = useSelector((state: RootState) => state.paintings);
+
   return (
     <>
       <PageHeading>
@@ -17,7 +23,13 @@ export const FavoritesPage = () => {
           </TextHighlightWrapper>
         </TextHighlight>
       </PageHeading>
-      <Section info="Saved by you" title="Your favorites list"></Section>;
+      <Section info="Saved by you" title="Your favorites list">
+        <CardWrapper>
+          {paintings.map((painting: PaintingCardInfoType) => (
+            <Card isFullSize={false} key={painting.id} painting={painting} />
+          ))}
+        </CardWrapper>
+      </Section>
     </>
   );
 };
