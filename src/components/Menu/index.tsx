@@ -1,5 +1,4 @@
-import { BurgerMenuIcon } from '@components/Icons';
-import { BookmarkIcon, HomeIcon } from '@components/Icons';
+import { BookmarkIcon, BurgerMenuIcon, HomeIcon } from '@components/Icons';
 import { MenuItem } from '@components/common';
 import { ROUTES } from '@constants/routes';
 import { useToggleMenu } from '@utils/hooks';

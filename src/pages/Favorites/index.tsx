@@ -1,6 +1,5 @@
-import { Card } from '@components/Card';
 import { BookmarkIcon } from '@components/Icons';
-import { Section } from '@components/Section';
+import { Card, Section } from '@components/index';
 import { CardWrapper, PageHeading, TextHighlightWrapper as TextHighlight } from '@constants/css';
 import { RootState } from '@store/reducers';
 import React from 'react';

@@ -1,9 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Card } from '@components/Card';
-import { CardList } from '@components/CardList';
-import { Loader } from '@components/Loader';
-import { Search } from '@components/Search';
-import { Section } from '@components/Section';
+import { Card, CardList, Loader, Search, Section } from '@components/index';
 import { API } from '@constants/api';
 import { CardWrapper, PageHeading, TextHighlightWrapper } from '@constants/css';
 import React, { useEffect, useState } from 'react';
