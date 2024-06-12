@@ -1,6 +1,6 @@
-import { deletePainting, savePainting } from '@/store/actions';
 import { BookmarkIcon, NotFoundIcon } from '@components/Icons';
 import { IconButtonWrapper } from '@constants/css';
+import { deletePainting, savePainting } from '@store/actions';
 import { getPaintingImageUrl } from '@utils/api';
 import { useBookmarkStatus } from '@utils/hooks';
 import React, { useState } from 'react';

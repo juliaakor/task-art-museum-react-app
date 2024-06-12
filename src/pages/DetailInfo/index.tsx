@@ -1,6 +1,5 @@
 import { BookmarkIcon } from '@components/Icons';
-import { Loader } from '@components/Loader';
-import { Overview } from '@components/Overview';
+import { Loader, Overview } from '@components/index';
 import { SubHeading } from '@constants/css';
 import { ROUTES } from '@constants/routes';
 import { deletePainting, savePainting } from '@store/actions';

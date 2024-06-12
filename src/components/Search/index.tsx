@@ -1,6 +1,6 @@
-import { CardList } from '@components/CardList';
 import { SearchIcon } from '@components/Icons';
 import { Input } from '@components/common';
+import { CardList } from '@components/index';
 import { getBaseApiUrl } from '@utils/api';
 import { useDebounce } from '@utils/hooks';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
