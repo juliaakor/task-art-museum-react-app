@@ -29,14 +29,6 @@ export interface FullPaintingInfo {
   title: string;
 }
 
-export interface MainPaintingInfo {
-  artist_title: string;
-  id: string;
-  is_public_domain: boolean;
-  title: string;
-  years: string;
-}
-
 export interface PaintingsListType {
   data: Array<PaintingCardInfoType>;
   isFullSize?: boolean;
