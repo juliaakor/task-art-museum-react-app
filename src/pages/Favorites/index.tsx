@@ -1,13 +1,13 @@
 import { Card } from '@components/Card';
 import { BookmarkIcon } from '@components/Icons';
 import { Section } from '@components/Section';
-import { PageHeading, TextHighlightWrapper as TextHighlight } from '@constants/css';
+import { CardWrapper, PageHeading, TextHighlightWrapper as TextHighlight } from '@constants/css';
 import { RootState } from '@store/reducers';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { PaintingCardInfoType } from 'types';
 
-import { CardWrapper, TextHighlightWrapper } from './styled';
+import { TextHighlightWrapper } from './styled';
 
 export const FavoritesPage = () => {
   const paintings = useSelector((state: RootState) => state.paintings);

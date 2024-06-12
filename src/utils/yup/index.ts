@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 const isRequiredString = Yup.string().required().nullable();
 const isRequiredBoolean = Yup.boolean().required();
-const isRequiredNumber = Yup.number().required();
+const isRequiredNumber = Yup.number().required().nullable();
 
 export const artworkShortSchema = Yup.object().shape({
   artist_title: isRequiredString,

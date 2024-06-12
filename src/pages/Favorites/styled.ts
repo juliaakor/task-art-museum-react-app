@@ -9,11 +9,3 @@ export const TextHighlightWrapper = styled.span`
     padding: 4px;
   }
 `;
-
-export const CardWrapper = styled.div`
-  ${FlexVerticalCenter}
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--c-spacing-large);
-  margin: 0 0 var(--c-spacing-large) 0;
-`;
