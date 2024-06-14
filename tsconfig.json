@@ -23,12 +23,15 @@
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"],
+      "@api/*": ["./src/api/*"],
       "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/constants/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@pages/*": ["./src/pages/*"],
       "@store/*": ["./src/store/*"],
       "@type/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@validation/*": ["./src/validation/*"]
     }
   },
   "include": ["src/**/*", "**/*.ts", "**/*.tsx"],

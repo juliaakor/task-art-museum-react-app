@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { getPaintingImageUrl } from '@api/index';
 import { BookmarkIcon, NotFoundIcon } from '@components/Icons';
 import { IconButtonWrapper } from '@constants/css';
+import { useBookmarkStatus } from '@hooks/index';
 import { deletePainting, savePainting } from '@store/actions';
-import { getPaintingImageUrl } from '@utils/api';
-import { useBookmarkStatus } from '@utils/hooks';
 
 import {
   CardArtist,
