@@ -1,6 +1,7 @@
-import { RootState } from '@store/reducers';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+
+import { RootState } from '@store/reducers';
 import { PaintingCardInfoType } from 'types';
 
 export const useBookmarkStatus = (paintingId: number): [boolean, () => void] => {

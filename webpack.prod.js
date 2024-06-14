@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
-const commonConfig = require('./webpack.config');
-const { merge } = require('webpack-merge');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { merge } = require('webpack-merge');
+
+const commonConfig = require('./webpack.config');
 
 module.exports = merge(commonConfig, {
   devtool: 'source-map',

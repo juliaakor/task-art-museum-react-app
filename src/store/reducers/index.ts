@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 import { combineReducers } from 'redux';
+
 import { PaintingCardInfoType } from 'types';
 
 import { DELETE_PAINTING, LOAD_PAINTINGS, PaintingActionTypes, SAVE_PAINTING } from '../actions';

@@ -1,5 +1,6 @@
+import { styled } from 'styled-components';
+
 import { FlexVerticalCenter, IconButtonWrapper } from '@constants/css';
-import styled from 'styled-components';
 
 export const DetailsContainer = styled.div`
   ${FlexVerticalCenter}

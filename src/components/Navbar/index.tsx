@@ -1,7 +1,8 @@
-import { MuseumLogoIcon } from '@components/Icons';
-import { Menu } from '@components/index';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+
+import { MuseumLogoIcon } from '@components/Icons';
+import { Menu } from '@components/index';
 
 import { Header } from './styled';
 

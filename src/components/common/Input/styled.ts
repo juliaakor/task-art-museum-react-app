@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const StyledInput = styled.input`
   background: var(--c-palette-color-gray-3-5);

@@ -1,5 +1,6 @@
+import { styled } from 'styled-components';
+
 import { FlexVerticalCenter } from '@constants/css';
-import styled from 'styled-components';
 
 export const Footer = styled.footer`
   ${FlexVerticalCenter}

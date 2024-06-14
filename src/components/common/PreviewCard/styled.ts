@@ -1,5 +1,6 @@
+import { styled, css } from 'styled-components';
+
 import { FlexVerticalCenter, TextLengthWrap } from '@constants/css';
-import styled, { css } from 'styled-components';
 
 interface PreviewCardProps {
   $position?: string;

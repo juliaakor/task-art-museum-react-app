@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const PropertyWrapper = styled.div`
   color: var(--c-palette-color-gray-3);

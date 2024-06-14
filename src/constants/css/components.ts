@@ -1,5 +1,6 @@
+import { styled } from 'styled-components';
+
 import { FlexVerticalCenter, TextHighlight } from '@constants/css';
-import styled from 'styled-components';
 
 export const PageHeading = styled.h1`
   width: 40%;

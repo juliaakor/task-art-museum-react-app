@@ -1,5 +1,6 @@
-import { ArrowIcon } from '@components/Icons';
 import React from 'react';
+
+import { ArrowIcon } from '@components/Icons';
 
 import { PaginationItem, PaginationItemsContainer } from './styled';
 

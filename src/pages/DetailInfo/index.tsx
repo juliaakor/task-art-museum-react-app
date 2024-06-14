@@ -1,3 +1,7 @@
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import { BookmarkIcon } from '@components/Icons';
 import { Loader, Overview } from '@components/index';
 import { SubHeading } from '@constants/css';
@@ -6,9 +10,6 @@ import { deletePainting, savePainting } from '@store/actions';
 import { getPaintingDetailsByIdUrl, getPaintingImageUrl } from '@utils/api';
 import { useBookmarkStatus } from '@utils/hooks';
 import { FullPaintingInfoSchema, FullPaintingInfoType } from '@utils/yup';
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
 
 import {
   ArtistName,
