@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { FlexVerticalCenter, TextHighlight } from '@constants/css';
+import { TextHighlight } from '@constants/css';
 
 export const PageHeading = styled.h1`
   width: 40%;
@@ -35,24 +35,6 @@ interface TextHighlightWrapperProps {
 
 export const TextHighlightWrapper = styled.span<TextHighlightWrapperProps>`
   ${({ color }) => TextHighlight(color)}
-`;
-
-export const ErrorContainer = styled.div`
-  height: 70vh;
-  ${FlexVerticalCenter}
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--c-spacing-x-small);
-  width: 30%;
-  margin: 5% auto;
-`;
-
-export const ErrorHeading = styled.h1`
-  font-size: var(--c-font-size-6);
-`;
-
-export const ErrorDescription = styled.p`
-  font-size: var(--c-font-size-5);
 `;
 
 export const CardWrapper = styled.div`
