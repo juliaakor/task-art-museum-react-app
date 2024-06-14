@@ -1,1 +1,3 @@
-export const getPaintingImageUrl = (id: string) => `https://www.artic.edu/iiif/2/${id}/full/843,/0/default.jpg`;
+import { API } from '@constants/api';
+
+export const getPaintingImageUrl = (id: string) => `${API.baseImageURL}${id}/full/843,/0/default.jpg`;
