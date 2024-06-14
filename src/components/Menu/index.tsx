@@ -3,7 +3,7 @@ import React from 'react';
 import { MenuItem } from '@components/common';
 import { BookmarkIcon, BurgerMenuIcon, HomeIcon } from '@components/Icons';
 import { ROUTES } from '@constants/routes';
-import { useToggleMenu } from '@utils/hooks';
+import { useToggleMenu } from '@hooks/index';
 
 import { BurgerMenuButton, Navigation } from './styled';
 

@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { Card, CardList, Loader, Search, Section } from '@components/index';
 import { API } from '@constants/api';
 import { CardWrapper, PageHeading, TextHighlightWrapper } from '@constants/css';
-import { PaintingCardInfoType, PaintingsListType } from 'types';
+import { PaintingCardInfoType, PaintingsListType } from '@type/api';
 
 import { CardListWrapper, SearchWrapper } from './styled';
 

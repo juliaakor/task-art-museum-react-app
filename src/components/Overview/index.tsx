@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { SubHeading, TextHighlightWrapper } from '@constants/css';
-import { FullPaintingInfoType } from '@utils/yup';
+import { FullPaintingInfoType } from '@validation/index';
 
 import { PropertyWrapper } from './styled';
 

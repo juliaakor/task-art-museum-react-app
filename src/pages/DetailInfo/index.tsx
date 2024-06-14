@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { getPaintingDetailsByIdUrl, getPaintingImageUrl } from '@api/index';
 import { BookmarkIcon } from '@components/Icons';
 import { Loader, Overview } from '@components/index';
 import { SubHeading } from '@constants/css';
 import { ROUTES } from '@constants/routes';
+import { useBookmarkStatus } from '@hooks/index';
 import { deletePainting, savePainting } from '@store/actions';
-import { getPaintingDetailsByIdUrl, getPaintingImageUrl } from '@utils/api';
-import { useBookmarkStatus } from '@utils/hooks';
-import { FullPaintingInfoSchema, FullPaintingInfoType } from '@utils/yup';
+import { FullPaintingInfoSchema, FullPaintingInfoType } from '@validation/index';
 
 import {
   ArtistName,

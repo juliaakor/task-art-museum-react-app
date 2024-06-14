@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { getBaseApiUrl } from '@utils/api';
-import { PaginationInfoType, PaintingCardInfoType } from 'types';
+import { getBaseApiUrl } from '@api/index';
+import { PaginationInfoType, PaintingCardInfoType } from '@type/api';
 
 export const usePagination = (
   initialPagination: PaginationInfoType,
