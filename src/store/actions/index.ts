@@ -1,4 +1,4 @@
-import { PaintingCardInfoType } from 'types';
+import { PaintingCardInfoType } from '@type/api';
 
 export const SAVE_PAINTING = 'SAVE_PAINTING';
 export const LOAD_PAINTINGS = 'LOAD_PAINTINGS';

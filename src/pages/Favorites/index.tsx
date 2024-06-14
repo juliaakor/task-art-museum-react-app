@@ -5,7 +5,7 @@ import { BookmarkIcon } from '@components/Icons';
 import { Card, Section } from '@components/index';
 import { CardWrapper, PageHeading, TextHighlightWrapper as TextHighlight } from '@constants/css';
 import { RootState } from '@store/reducers';
-import { PaintingCardInfoType } from 'types';
+import { PaintingCardInfoType } from '@type/api';
 
 import { TextHighlightWrapper } from './styled';
 

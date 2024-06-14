@@ -5,9 +5,9 @@ import { Schema } from 'yup';
 import { Input } from '@components/common';
 import { SearchIcon } from '@components/Icons';
 import { CardList } from '@components/index';
+import { PaintingsListType } from '@type/api';
 import { getBaseApiUrl } from '@utils/api';
 import { useDebounce } from '@utils/hooks';
-import { PaintingsListType } from 'types';
 
 import { CardListWrapper, FieldWrapper, SearchError, SearchWrapper, SubmitIcon } from './styled';
 
