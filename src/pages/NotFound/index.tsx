@@ -1,7 +1,8 @@
-import { ErrorContainer, ErrorDescription, ErrorHeading, TextHighlightWrapper } from '@constants/css';
-import { ROUTES } from '@constants/routes';
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import { ErrorContainer, ErrorDescription, ErrorHeading, TextHighlightWrapper } from '@constants/css';
+import { ROUTES } from '@constants/routes';
 
 export const NotFoundPage = () => {
   return (

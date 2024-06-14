@@ -1,12 +1,13 @@
-import { SearchIcon } from '@components/Icons';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Schema } from 'yup';
+
 import { Input } from '@components/common';
+import { SearchIcon } from '@components/Icons';
 import { CardList } from '@components/index';
 import { getBaseApiUrl } from '@utils/api';
 import { useDebounce } from '@utils/hooks';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React, { useCallback, useEffect, useState } from 'react';
 import { PaintingsListType } from 'types';
-import { Schema } from 'yup';
 
 import { CardListWrapper, FieldWrapper, SearchError, SearchWrapper, SubmitIcon } from './styled';
 

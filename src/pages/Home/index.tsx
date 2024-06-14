@@ -1,10 +1,10 @@
-/* eslint-disable react/no-unescaped-entities */
+import React, { useEffect, useState } from 'react';
+import * as Yup from 'yup';
+
 import { Card, CardList, Loader, Search, Section } from '@components/index';
 import { API } from '@constants/api';
 import { CardWrapper, PageHeading, TextHighlightWrapper } from '@constants/css';
-import React, { useEffect, useState } from 'react';
 import { PaintingCardInfoType, PaintingsListType } from 'types';
-import * as Yup from 'yup';
 
 import { CardListWrapper, SearchWrapper } from './styled';
 
@@ -46,7 +46,8 @@ export const HomePage = () => {
   return (
     <>
       <PageHeading>
-        Let's Find Some <TextHighlightWrapper color="var(--c-palette-color-orange-1)">Art</TextHighlightWrapper> Here!
+        {`Let's Find Some `}
+        <TextHighlightWrapper color="var(--c-palette-color-orange-1)">Art</TextHighlightWrapper> Here!
       </PageHeading>
       <SearchWrapper>
         <Search

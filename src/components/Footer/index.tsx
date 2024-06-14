@@ -1,5 +1,6 @@
-import { ModsenLogoIcon, MuseumLogoIcon } from '@components/Icons';
 import React from 'react';
+
+import { ModsenLogoIcon, MuseumLogoIcon } from '@components/Icons';
 
 import { Footer as FooterContainer } from './styled';
 

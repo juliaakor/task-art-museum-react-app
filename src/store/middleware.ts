@@ -1,5 +1,6 @@
-import { SAVE_PAINTING } from '@store/actions';
 import { Middleware } from 'redux';
+
+import { SAVE_PAINTING } from '@store/actions';
 
 export const localStorageMiddleware: Middleware = (store) => (next) => (action) => {
   const result = next(action);

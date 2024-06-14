@@ -1,7 +1,8 @@
-import { PreviewCard } from '@components/common';
-import { getPaintingImageUrl } from '@utils/api';
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import { PreviewCard } from '@components/common';
+import { getPaintingImageUrl } from '@utils/api';
 import { PaintingCardInfoType } from 'types';
 
 import { CardContainer, Painting } from './styled';

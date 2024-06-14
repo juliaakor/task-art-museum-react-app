@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const SearchWrapper = styled.div`
   margin-bottom: var(--c-spacing-xxx-large);

@@ -1,8 +1,9 @@
-import { BookmarkIcon, BurgerMenuIcon, HomeIcon } from '@components/Icons';
+import React from 'react';
+
 import { MenuItem } from '@components/common';
+import { BookmarkIcon, BurgerMenuIcon, HomeIcon } from '@components/Icons';
 import { ROUTES } from '@constants/routes';
 import { useToggleMenu } from '@utils/hooks';
-import React from 'react';
 
 import { BurgerMenuButton, Navigation } from './styled';
 

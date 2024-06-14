@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
-const commonConfig = require('./webpack.config');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { merge } = require('webpack-merge');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const commonConfig = require('./webpack.config');
 
 module.exports = merge(commonConfig, {
   devServer: {

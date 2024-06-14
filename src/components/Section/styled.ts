@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const SectionContainer = styled.section`
   margin: 0 0 var(--c-spacing-xxx-large) 0;

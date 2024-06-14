@@ -1,5 +1,6 @@
-import { ArrowIcon } from '@components/Icons';
 import React from 'react';
+
+import { ArrowIcon } from '@components/Icons';
 
 import { PaginationItem, PaginationItemsContainer } from './styled';
 
@@ -7,7 +8,6 @@ interface PaginationProps {
   hasNext?: boolean;
   hasPrev?: boolean;
   onNextPage: () => void;
-  // eslint-disable-next-line no-unused-vars
   onPageClick: (page: number) => void;
   onPrevPage?: () => void;
   page: number;

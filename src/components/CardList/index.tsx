@@ -1,6 +1,7 @@
+import React, { useEffect } from 'react';
+
 import { Card, Loader, Pagination } from '@components/index';
 import { usePagination } from '@utils/hooks/usePagination';
-import React, { useEffect } from 'react';
 import { PaintingsListType } from 'types';
 
 import { CardListContainer } from './styled';
