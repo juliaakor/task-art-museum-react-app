@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import { combineReducers } from 'redux';
 
 import { PaintingCardInfoType } from 'types';

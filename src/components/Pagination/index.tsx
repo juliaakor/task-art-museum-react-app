@@ -8,7 +8,6 @@ interface PaginationProps {
   hasNext?: boolean;
   hasPrev?: boolean;
   onNextPage: () => void;
-  // eslint-disable-next-line no-unused-vars
   onPageClick: (page: number) => void;
   onPrevPage?: () => void;
   page: number;

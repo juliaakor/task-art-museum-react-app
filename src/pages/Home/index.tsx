@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 
@@ -47,7 +46,8 @@ export const HomePage = () => {
   return (
     <>
       <PageHeading>
-        Let's Find Some <TextHighlightWrapper color="var(--c-palette-color-orange-1)">Art</TextHighlightWrapper> Here!
+        {`Let's Find Some `}
+        <TextHighlightWrapper color="var(--c-palette-color-orange-1)">Art</TextHighlightWrapper> Here!
       </PageHeading>
       <SearchWrapper>
         <Search
