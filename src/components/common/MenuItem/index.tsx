@@ -7,11 +7,12 @@ interface MenuItemProps {
   href: string;
   icon: ReactElement;
   label: string;
+  handleMenuItemClick?: () => void;
 }
 
-export const MenuItem = ({ href, icon, label, ...props }: MenuItemProps) => {
+export const MenuItem = ({ handleMenuItemClick, href, icon, label, ...props }: MenuItemProps) => {
   return (
-    <NavLink to={href} {...props}>
+    <NavLink to={href} onClick={handleMenuItemClick} {...props}>
       <Container>
         {icon}
         <NavLabel>{label}</NavLabel>
