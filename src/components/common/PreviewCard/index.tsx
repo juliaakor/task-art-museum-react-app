@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 import { getPaintingImageUrl } from '@api/index';
 import { BookmarkIcon, NotFoundIcon } from '@components/Icons';
 import { IconButtonWrapper } from '@constants/css';
 import { useBookmarkStatus } from '@hooks/index';
-import { deletePainting, savePainting } from '@store/actions';
 
 import {
   CardArtist,
@@ -48,7 +46,6 @@ export const PreviewCard = ({
 }: PreviewCardProps) => {
   const [isImageLoaded, setisImageLoaded] = useState(true);
   const [isBookmarked, toggleBookmark] = useBookmarkStatus(id);
-  const dispatch = useDispatch();
 
   const handleImgError = () => {
     setisImageLoaded(false);
@@ -56,12 +53,7 @@ export const PreviewCard = ({
 
   const handleBookmarkClick = (event: React.MouseEvent) => {
     event.preventDefault();
-    if (isBookmarked) {
-      dispatch(deletePainting(id));
-    } else {
-      dispatch(savePainting({ artist_title, id, image_id, is_public_domain, title }));
-    }
-    toggleBookmark();
+    isBookmarked ? toggleBookmark(id) : toggleBookmark({ artist_title, id, image_id, is_public_domain, title });
   };
 
   return (

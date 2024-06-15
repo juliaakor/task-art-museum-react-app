@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { FlexVerticalCenter } from '@/constants/css';
+import { FlexVerticalCenter } from '@constants/css';
 
 export const CardContainer = styled.div`
   position: relative;

@@ -1,18 +1,24 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { deletePainting, savePainting } from '@store/actions';
 import { RootState } from '@store/reducers';
 import { PaintingCardInfoType } from '@type/api';
 
-export const useBookmarkStatus = (paintingId: number): [boolean, () => void] => {
-  const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
+export const useBookmarkStatus = (paintingId: number) => {
+  const dispatch = useDispatch();
   const paintings = useSelector((state: RootState) => state.paintings);
-
   const isPaintingBookmarked = paintings.some((painting: PaintingCardInfoType) => painting.id === paintingId);
 
-  const toggleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(isPaintingBookmarked);
+
+  const toggleBookmark = (payload: number | PaintingCardInfoType) => {
+    isBookmarked
+      ? dispatch(deletePainting(payload as number))
+      : dispatch(savePainting(payload as PaintingCardInfoType));
+
+    setIsBookmarked((prevState) => !prevState);
   };
 
-  return [isPaintingBookmarked, toggleBookmark];
+  return [isBookmarked, toggleBookmark] as const;
 };
