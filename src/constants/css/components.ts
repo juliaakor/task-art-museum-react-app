@@ -23,6 +23,7 @@ export const IconButtonWrapper = styled.span`
   background: var(--c-palette-color-white-3);
   border-radius: 35px;
   padding: var(--c-spacing-medium);
+  cursor: pointer;
 
   &:hover {
     background: var(--c-palette-color-orange-3-30);

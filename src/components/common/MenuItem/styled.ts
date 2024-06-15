@@ -6,6 +6,7 @@ export const Container = styled.div`
   ${FlexVerticalCenter}
   justify-content: space-between;
   width: max-content;
+  cursor: pointer;
 
   &:hover {
     background: var(--c-palette-color-gray-3-50);

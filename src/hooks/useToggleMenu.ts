@@ -16,5 +16,10 @@ export const useToggleMenu = (isOpen = false, mobileBreakpoint = 500) => {
     };
   }, [mobileBreakpoint]);
 
+  useEffect(() => {
+    const body = document.body.style;
+    isMenuOpen && isMobile ? (body.overflow = 'hidden') : (body.overflow = 'auto');
+  }, [isMenuOpen, isMobile]);
+
   return { isMenuOpen, isMobile, setIsMobile, toggleMenu };
 };

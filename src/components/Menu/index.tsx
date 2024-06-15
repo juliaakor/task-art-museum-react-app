@@ -14,6 +14,10 @@ interface MenuProps {
 export const Menu = ({ isHomePage }: MenuProps) => {
   const { isMenuOpen, isMobile, toggleMenu } = useToggleMenu();
 
+  const handleToggleMenu = () => {
+    toggleMenu((prevState) => !prevState);
+  };
+
   return (
     <>
       {isMobile && (
@@ -23,11 +27,14 @@ export const Menu = ({ isHomePage }: MenuProps) => {
       )}
       {(!isMobile || isMenuOpen) && (
         <Navigation>
-          {!isHomePage && <MenuItem href={ROUTES.HOME} icon={<HomeIcon />} label="Home" />}
+          {!isHomePage && (
+            <MenuItem href={ROUTES.HOME} icon={<HomeIcon />} label="Home" handleMenuItemClick={handleToggleMenu} />
+          )}
           <MenuItem
             href={ROUTES.FAVORITES}
             icon={<BookmarkIcon color="var(--c-palette-color-orange-2)" />}
             label="Your favorites"
+            handleMenuItemClick={handleToggleMenu}
           />
         </Navigation>
       )}

@@ -4,7 +4,7 @@ import { Card, Loader, Pagination } from '@components/index';
 import { usePagination } from '@hooks/index';
 import { PaintingsListType } from '@type/api';
 
-import { CardListContainer } from './styled';
+import { CardListContainer, Info } from './styled';
 
 export const CardList = ({ data, isFullSize, pagination, query }: PaintingsListType) => {
   const paintingsPerPage = 3;
@@ -18,22 +18,26 @@ export const CardList = ({ data, isFullSize, pagination, query }: PaintingsListT
   return (
     <div>
       {currentPaintings ? (
-        <>
-          <CardListContainer>
-            {currentPaintings.map((painting) => (
-              <Card isFullSize={isFullSize} key={painting.id} painting={painting} />
-            ))}
-          </CardListContainer>
-          <Pagination
-            hasNext={currentPage < pagesCount}
-            hasPrev={currentPage > 1}
-            onNextPage={handleNextPage}
-            onPageClick={handlePageClick}
-            onPrevPage={handlePrevPage}
-            page={currentPage}
-            pagesCount={pagesCount}
-          />
-        </>
+        currentPaintings.length === 0 ? (
+          <Info>No Results Found...</Info>
+        ) : (
+          <>
+            <CardListContainer>
+              {currentPaintings.map((painting) => (
+                <Card isFullSize={isFullSize} key={painting.id} painting={painting} />
+              ))}
+            </CardListContainer>
+            <Pagination
+              hasNext={currentPage < pagesCount}
+              hasPrev={currentPage > 1}
+              onNextPage={handleNextPage}
+              onPageClick={handlePageClick}
+              onPrevPage={handlePrevPage}
+              page={currentPage}
+              pagesCount={pagesCount}
+            />
+          </>
+        )
       ) : (
         <Loader />
       )}
