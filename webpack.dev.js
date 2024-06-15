@@ -1,19 +1,12 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { merge } = require('webpack-merge');
 
 const commonConfig = require('./webpack.config');
 
 module.exports = merge(commonConfig, {
-  devServer: {
-    compress: true,
-    historyApiFallback: true,
-    host: 'localhost',
-    hot: true,
-    open: true,
-    port: 3000,
-  },
   devtool: 'inline-source-map',
   mode: 'development',
   module: {
@@ -34,7 +27,7 @@ module.exports = merge(commonConfig, {
     ],
   },
   output: {
-    assetModuleFilename: 'css/[name][ext]',
+    assetModuleFilename: 'asset/[name][ext]',
     chunkFilename: 'js/[name].bundle.js',
     filename: 'js/[name].bundle.js',
   },
@@ -42,6 +35,10 @@ module.exports = merge(commonConfig, {
     new HtmlWebpackPlugin({
       showErrors: true,
       template: path.join(__dirname, 'public', 'index.html'),
+    }),
+    new MiniCssExtractPlugin({
+      chunkFilename: '[id].css',
+      filename: 'css/[name].css',
     }),
   ],
 });

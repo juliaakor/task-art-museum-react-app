@@ -1,5 +1,6 @@
 const path = require('path');
 
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { merge } = require('webpack-merge');
@@ -27,16 +28,41 @@ module.exports = merge(commonConfig, {
     ],
   },
   output: {
-    assetModuleFilename: 'css/[name][chunkhash][ext]',
+    assetModuleFilename: 'asset/[name][chunkhash][ext]',
     chunkFilename: 'js/[name].[chunkhash].js',
     filename: 'js/[name].[chunkhash].js',
   },
   plugins: [
     new HtmlWebpackPlugin({
       cache: true,
+      favicon: './public/favicon.ico',
       hash: true,
       minify: true,
       template: path.join(__dirname, 'public', 'index.html'),
+    }),
+    new MiniCssExtractPlugin({
+      chunkFilename: '[id].[contenthash].css',
+      filename: 'css/[name].[contenthash].css',
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'public/favicon.ico',
+          to: '.',
+        },
+        {
+          from: 'public/robots.txt',
+          to: '.',
+        },
+        {
+          from: 'public/logo192.png',
+          to: '.',
+        },
+        {
+          from: 'public/logo512.png',
+          to: '.',
+        },
+      ],
     }),
   ],
 });
