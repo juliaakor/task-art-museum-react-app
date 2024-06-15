@@ -1,9 +1,18 @@
 const path = require('path');
 
+const { EsbuildPlugin } = require('esbuild-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
+  devServer: {
+    compress: true,
+    historyApiFallback: true,
+    host: 'localhost',
+    hot: true,
+    open: true,
+    port: 3000,
+  },
   entry: {
     index: path.join(__dirname, 'src', 'index.tsx'),
   },
@@ -34,6 +43,11 @@ module.exports = {
   optimization: {
     mergeDuplicateChunks: true,
     minimize: true,
+    minimizer: [
+      new EsbuildPlugin({
+        target: 'es2016',
+      }),
+    ],
     removeEmptyChunks: true,
     sideEffects: false,
     splitChunks: {
