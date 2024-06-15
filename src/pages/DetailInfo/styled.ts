@@ -8,6 +8,18 @@ export const DetailsContainer = styled.div`
   width: 70%;
   margin: var(--c-spacing-xxx-large) auto;
   gap: var(--c-spacing-xx-large);
+
+  @media (max-width: 768px) {
+    margin: var(--c-spacing-xx-large) auto;
+    gap: var(--c-spacing-large);
+    width: 75%;
+  }
+
+  @media (max-width: 425px) {
+    width: 70%;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const PaintingImage = styled.img`
@@ -31,6 +43,10 @@ export const OverviewContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 35rem;
+
+  @media (max-width: 425px) {
+    height: 32rem;
+  }
 `;
 
 export const ArtistName = styled.h5`

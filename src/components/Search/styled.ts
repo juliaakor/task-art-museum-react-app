@@ -32,6 +32,6 @@ export const SearchError = styled.span`
 `;
 
 export const CardListWrapper = styled.div`
-  margin: var(--c-spacing-x-medium) auto;
-  width: 85%;
+  margin: var(--c-spacing-xxx-medium) auto;
+  width: fit-content;
 `;

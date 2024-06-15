@@ -33,7 +33,7 @@ const FullSizeCardDefaults = {
 
 const MiniSizeCardDefaults = {
   $position: 'relative',
-  $size: 'var(--c-size-large)',
+  $size: '24rem',
 };
 
 export const PreviewCard = ({
