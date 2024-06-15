@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { getPaintingDetailsByIdUrl, getPaintingImageUrl } from '@api/index';
@@ -8,7 +7,6 @@ import { Loader, Overview } from '@components/index';
 import { SubHeading } from '@constants/css';
 import { ROUTES } from '@constants/routes';
 import { useBookmarkStatus } from '@hooks/index';
-import { deletePainting, savePainting } from '@store/actions';
 import { FullPaintingInfoSchema, FullPaintingInfoType } from '@validation/index';
 
 import {
@@ -26,7 +24,6 @@ export const DetailInfoPage = () => {
   const id = Number(stringId);
   const navigate = useNavigate();
   const [isBookmarked, toggleBookmark] = useBookmarkStatus(id);
-  const dispatch = useDispatch();
 
   const [data, setData] = useState<FullPaintingInfoType>();
 
@@ -49,20 +46,15 @@ export const DetailInfoPage = () => {
 
   const handleBookmarkClick = (event: React.MouseEvent) => {
     event.stopPropagation();
-    if (isBookmarked) {
-      dispatch(deletePainting(id));
-    } else {
-      dispatch(
-        savePainting({
+    isBookmarked
+      ? toggleBookmark(id)
+      : toggleBookmark({
           artist_title: data?.artist_title || '',
           id,
           image_id: data?.image_id || '',
           is_public_domain: data?.is_public_domain || false,
           title: data?.title || '',
-        })
-      );
-    }
-    toggleBookmark();
+        });
   };
 
   return (
