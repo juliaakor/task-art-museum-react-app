@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { deletePainting, savePainting } from '@store/actions';
+import { AppDispatch, deletePainting, savePainting } from '@store/actions';
 import { RootState } from '@store/reducers';
 import { PaintingCardInfoType } from '@type/api';
 
 export const useBookmarkStatus = (paintingId: number) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const paintings = useSelector((state: RootState) => state.paintings);
   const isPaintingBookmarked = paintings.some((painting: PaintingCardInfoType) => painting.id === paintingId);
 
