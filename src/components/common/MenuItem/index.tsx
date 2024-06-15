@@ -11,11 +11,11 @@ interface MenuItemProps {
 
 export const MenuItem = ({ href, icon, label, ...props }: MenuItemProps) => {
   return (
-    <Container>
-      {icon}
-      <NavLink to={href} {...props}>
+    <NavLink to={href} {...props}>
+      <Container>
+        {icon}
         <NavLabel>{label}</NavLabel>
-      </NavLink>
-    </Container>
+      </Container>
+    </NavLink>
   );
 };

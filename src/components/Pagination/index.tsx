@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ArrowIcon } from '@components/Icons';
 
-import { PaginationItem, PaginationItemsContainer } from './styled';
+import { ArrowButton, PaginationItem, PaginationItemsContainer } from './styled';
 
 interface PaginationProps {
   hasNext?: boolean;
@@ -30,9 +30,9 @@ export const Pagination = ({ onNextPage: handleNextPageClick, onPageClick, page,
           {pageNumber}
         </PaginationItem>
       ))}
-      <div onClick={() => handleNextPageClick()}>
+      <ArrowButton onClick={() => handleNextPageClick()}>
         <ArrowIcon />
-      </div>
+      </ArrowButton>
     </PaginationItemsContainer>
   );
 };
