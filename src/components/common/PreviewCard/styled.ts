@@ -1,6 +1,6 @@
 import { styled, css } from 'styled-components';
 
-import { FlexVerticalCenter, TextLengthWrap } from '@constants/css';
+import { FlexVerticalCenter, TextLengthWrap } from '@styles/index';
 
 interface PreviewCardProps {
   $position?: string;
@@ -8,7 +8,7 @@ interface PreviewCardProps {
 }
 
 export const PreviewCardContainer = styled.div<PreviewCardProps>`
-  background: var(--c-palette-color-white-1);
+  background: ${(props) => props.theme.cardBackground};
   padding: var(--c-spacing-medium) 1.5rem;
   ${FlexVerticalCenter}
   justify-content: space-between;
@@ -18,7 +18,7 @@ export const PreviewCardContainer = styled.div<PreviewCardProps>`
 `;
 
 export const CardArtist = styled.h5`
-  color: var(--c-palette-color-orange-2);
+  color: ${(props) => props.theme.textHighlight};
   font-size: var(--c-font-size-2);
   font-weight: var(--c-font-weight-regular);
   margin-bottom: var(--c-spacing-small);
@@ -26,7 +26,7 @@ export const CardArtist = styled.h5`
 `;
 
 export const CardTitle = styled.h4`
-  color: var(--c-palette-color-gray-3);
+  color: ${(props) => props.theme.textPrimary};
   font-size: var(--c-font-size-3);
   font-weight: var(--c-font-weight-medium);
   ${TextLengthWrap}
@@ -38,7 +38,7 @@ export const CardInfo = styled.div`
 `;
 
 export const CardStatus = styled.span`
-  color: var(--c-palette-color-gray-3);
+  color: ${(props) => props.theme.textPrimary};
   font-size: var(--c-font-size-2);
   font-weight: var(--c-font-weight-bold);
 `;

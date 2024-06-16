@@ -21,12 +21,12 @@ export const SubmitIcon = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: var(--c-palette-color-orange-3-30);
+    background: ${(props) => props.theme.buttonActiveBackground};
   }
 `;
 
 export const SearchError = styled.span`
-  color: var(--c-palette-color-orange-3-70);
+  color: ${(props) => props.theme.textWarning};
   margin: var(--c-spacing-x-small);
   font-size: var(--c-font-weight-thin);
 `;

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useTheme } from 'styled-components';
 
 import { getPaintingDetailsByIdUrl, getPaintingImageUrl } from '@api/index';
 import { BookmarkIcon } from '@components/Icons';
 import { Loader, Overview } from '@components/index';
-import { SubHeading } from '@constants/css';
 import { ROUTES } from '@constants/routes';
 import { useBookmarkStatus } from '@hooks/index';
+import { SubHeading } from '@styles/index';
 import { FullPaintingInfoSchema, FullPaintingInfoType } from '@validation/index';
 
 import {
@@ -20,6 +21,7 @@ import {
 } from './styled';
 
 export const DetailInfoPage = () => {
+  const theme = useTheme();
   const { id: stringId } = useParams();
   const id = Number(stringId);
   const navigate = useNavigate();
@@ -64,9 +66,7 @@ export const DetailInfoPage = () => {
           <PaintingWrapper>
             <PaintingImage src={getPaintingImageUrl(data.image_id)} />
             <ButtonWrapper onClick={handleBookmarkClick}>
-              <BookmarkIcon
-                color={isBookmarked ? 'var(--c-palette-color-green-1)' : 'var(--c-palette-color-orange-2)'}
-              />
+              <BookmarkIcon color={isBookmarked ? `${theme.buttonActiveIcon}` : `${theme.textHighlight}`} />
             </ButtonWrapper>
           </PaintingWrapper>
           <OverviewContainer>

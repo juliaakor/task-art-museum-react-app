@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { useTheme } from 'styled-components';
 
 import { getPaintingImageUrl } from '@api/index';
 import { BookmarkIcon, NotFoundIcon } from '@components/Icons';
-import { IconButtonWrapper } from '@constants/css';
 import { useBookmarkStatus } from '@hooks/index';
+import { IconButtonWrapper } from '@styles/index';
 
 import {
   CardArtist,
@@ -44,6 +45,7 @@ export const PreviewCard = ({
   isFullSize = true,
   title,
 }: PreviewCardProps) => {
+  const theme = useTheme();
   const [isImageLoaded, setisImageLoaded] = useState(true);
   const [isBookmarked, toggleBookmark] = useBookmarkStatus(id);
 
@@ -75,7 +77,7 @@ export const PreviewCard = ({
       </CardInfo>
       <IconButtonWrapper onClick={handleBookmarkClick}>
         <BookmarkIcon
-          color={isBookmarked ? 'var(--c-palette-color-green-1)' : 'var(--c-palette-color-orange-2)'}
+          color={isBookmarked ? `${theme.buttonActiveIcon}` : `${theme.textHighlight}`}
           key={id}
           size={24}
         />

@@ -7,7 +7,7 @@ export const SectionContainer = styled.section`
 export const SubSectionName = styled.h3`
   font-size: var(--c-font-size-2);
   padding: 0;
-  color: var(--c-palette-color-orange-2);
+  color: ${(props) => props.theme.textHighlight};
   margin: 0 auto;
   width: max-content;
 `;
@@ -15,7 +15,7 @@ export const SubSectionName = styled.h3`
 export const SectionName = styled.div`
   font-size: var(--c-font-size-6);
   padding: 0 0 var(--c-spacing-xxx-medium) 0;
-  color: var(--c-palette-color-gray-3);
+  color: ${(props) => props.theme.textPrimary};
   margin: 0 auto var(--c-spacing-xxx-medium) auto;
   width: max-content;
 `;

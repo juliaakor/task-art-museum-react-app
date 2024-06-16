@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const StyledInput = styled.input`
-  background: var(--c-palette-color-gray-3-5);
+  background: ${(props) => props.theme.inputBackground};
   border-radius: 16px;
   padding: var(--c-spacing-medium);
   border: 0;
@@ -9,10 +9,10 @@ export const StyledInput = styled.input`
   width: 100%;
 
   &::placeholder {
-    color: var(--c-palette-color-gray-3-50);
+    color: ${(props) => props.theme.inputPlaceholder};
   }
 
   &:focus {
-    box-shadow: 11px 4px 24px -9px var(--c-palette-color-orange-2);
+    box-shadow: 11px 4px 24px -9px ${(props) => props.theme.textHighlight};
   }
 `;

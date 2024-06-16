@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { FlexVerticalCenter } from '@constants/css';
+import { FlexVerticalCenter } from '@styles/index';
 
 export const CardListContainer = styled.div`
   ${FlexVerticalCenter}
@@ -11,6 +11,6 @@ export const CardListContainer = styled.div`
 `;
 
 export const Info = styled.div`
-  color: var(--c-palette-color-gray-4);
+  color: ${(props) => props.theme.textInfo};
   letter-spacing: 2px;
 `;

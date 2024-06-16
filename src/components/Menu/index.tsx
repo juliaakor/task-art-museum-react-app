@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from 'styled-components';
 
 import { MenuItem } from '@components/common';
 import { BookmarkIcon, BurgerMenuIcon, HomeIcon } from '@components/Icons';
@@ -12,6 +13,7 @@ interface MenuProps {
 }
 
 export const Menu = ({ isHomePage }: MenuProps) => {
+  const theme = useTheme();
   const { isMenuOpen, isMobile, toggleMenu } = useToggleMenu();
 
   const handleToggleMenu = () => {
@@ -32,7 +34,7 @@ export const Menu = ({ isHomePage }: MenuProps) => {
           )}
           <MenuItem
             href={ROUTES.FAVORITES}
-            icon={<BookmarkIcon color="var(--c-palette-color-orange-2)" />}
+            icon={<BookmarkIcon color={`${theme.textHighlight}`} />}
             label="Your favorites"
             handleMenuItemClick={handleToggleMenu}
           />
