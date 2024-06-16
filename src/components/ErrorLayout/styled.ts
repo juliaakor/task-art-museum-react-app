@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { FlexVerticalCenter } from '@constants/css';
+import { FlexVerticalCenter } from '@styles/index';
 
 export const ErrorContainer = styled.div`
   height: 70vh;

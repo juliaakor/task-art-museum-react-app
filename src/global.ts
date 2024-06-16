@@ -1,5 +1,7 @@
-import '@constants/css';
 import { createGlobalStyle } from 'styled-components';
+
+import '@constants/css';
+import '@styles/index';
 
 export default createGlobalStyle`
   html {
@@ -19,7 +21,7 @@ export default createGlobalStyle`
   #root{
     margin: 0 auto;
     isolation: isolate;
-    background: var(--c-palette-color-white-2);
+    background: ${(props) => props.theme.canvas};
   }
 
   a {

@@ -30,7 +30,7 @@ export const LoaderContainer = styled.div`
       width: 7.2px;
       height: 7.2px;
       border-radius: 50%;
-      background: var(--c-palette-color-orange-1);
+      background: ${(props) => props.theme.brandPrimary};
       margin: -3.6px 0 0 -3.6px;
     }
 

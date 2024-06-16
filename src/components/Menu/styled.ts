@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { FlexVerticalCenter } from '@constants/css';
+import { FlexVerticalCenter } from '@styles/index';
 
 export const BurgerMenuButton = styled.span`
   z-index: 99;
@@ -20,7 +20,7 @@ export const Navigation = styled.nav`
     position: fixed;
     top: 0;
     right: 0;
-    background-color: var(--c-palette-color-gray-3-95);
+    background-color: ${(props) => props.theme.navBackground};
     z-index: 98;
     width: 100vw;
     height: 100vh;

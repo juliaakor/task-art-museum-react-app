@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { FlexVerticalCenter, IconButtonWrapper } from '@constants/css';
+import { IconButtonWrapper, FlexVerticalCenter } from '@styles/index';
 
 export const DetailsContainer = styled.div`
   ${FlexVerticalCenter}
@@ -50,14 +50,14 @@ export const OverviewContainer = styled.div`
 `;
 
 export const ArtistName = styled.h5`
-  color: var(--c-palette-color-orange-2);
+  color: ${(props) => props.theme.textHighlight};
   font-size: var(--c-font-size-5);
   font-weight: var(--c-font-weight-regular);
   padding: 0 0 var(--c-spacing-medium) 0;
 `;
 
 export const YearsLabel = styled.span`
-  color: var(--c-palette-color-gray-3);
+  color: ${(props) => props.theme.textPrimary};
   font-size: var(--c-font-size-2);
   font-weight: var(--c-font-weight-bold);
 `;

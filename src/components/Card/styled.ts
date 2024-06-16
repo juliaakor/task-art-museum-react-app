@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { FlexVerticalCenter } from '@constants/css';
+import { FlexVerticalCenter } from '@styles/index';
 
 export const CardContainer = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
 
   &:hover {
-    box-shadow: 0px 17px 39px -7px var(--c-palette-color-orange-2);
+    box-shadow: 0px 17px 39px -7px ${(props) => props.theme.textHighlight};
   }
 `;
 

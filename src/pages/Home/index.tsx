@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 
 import { Card, CardList, Loader, Search, Section } from '@components/index';
 import { API } from '@constants/api';
-import { CardWrapper, PageHeading, TextHighlightWrapper } from '@constants/css';
+import { CardWrapper, PageHeading, TextHighlightWrapper } from '@styles/index';
 import { PaintingCardInfoType, PaintingsListType } from '@type/api';
 
 import { CardListWrapper, SearchWrapper } from './styled';
@@ -21,6 +22,7 @@ const initialValues: SearchFormValues = {
 };
 
 export const HomePage = () => {
+  const theme = useTheme();
   const [data, setData] = useState<PaintingsListType | null>(null);
   const [rest, setRest] = useState<PaintingsListType | null>(null);
 
@@ -47,7 +49,7 @@ export const HomePage = () => {
     <>
       <PageHeading>
         {`Let's Find Some `}
-        <TextHighlightWrapper color="var(--c-palette-color-orange-1)">Art</TextHighlightWrapper> Here!
+        <TextHighlightWrapper color={`${theme.brandPrimary}`}>Art</TextHighlightWrapper> Here!
       </PageHeading>
       <SearchWrapper>
         <Search

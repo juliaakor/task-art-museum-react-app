@@ -1,3 +1,2 @@
-@import 'hooks-font.css';
-@import 'hooks-palette.css';
-@import 'hooks-units.css';
+@import './hooks-font.css';
+@import './hooks-units.css';

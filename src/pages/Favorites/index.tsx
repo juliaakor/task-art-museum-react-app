@@ -1,22 +1,24 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useTheme } from 'styled-components';
 
 import { BookmarkIcon } from '@components/Icons';
 import { Card, Section } from '@components/index';
-import { CardWrapper, PageHeading, TextHighlightWrapper as TextHighlight } from '@constants/css';
 import { RootState } from '@store/reducers';
+import { CardWrapper, PageHeading, TextHighlightWrapper as TextHighlight } from '@styles/index';
 import { PaintingCardInfoType } from '@type/api';
 
 import { TextHighlightWrapper } from './styled';
 
 export const FavoritesPage = () => {
+  const theme = useTheme();
   const paintings = useSelector((state: RootState) => state.paintings);
 
   return (
     <>
       <PageHeading>
         Here are your{' '}
-        <TextHighlight color="var(--c-palette-color-orange-1)">
+        <TextHighlight color={`${theme.brandPrimary}`}>
           {' '}
           <TextHighlightWrapper>
             <BookmarkIcon size={64} /> Favorites
