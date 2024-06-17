@@ -1,3 +1,5 @@
+import * as Yup from 'yup';
+
 export interface PaintingCardInfoType {
   artist_title: string;
   id: number;
@@ -35,4 +37,5 @@ export interface PaintingsListType {
   isFullSize?: boolean;
   pagination: PaginationInfoType;
   query?: string;
+  validationSchema?: Yup.Schema;
 }

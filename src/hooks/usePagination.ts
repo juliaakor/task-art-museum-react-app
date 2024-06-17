@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
+import * as Yup from 'yup';
 
-import { getBaseApiUrl } from '@api/index';
+import { fetchData, getBaseApiUrl } from '@api/index';
 import { PaginationInfoType, PaintingCardInfoType } from '@type/api';
 
 export function usePagination(
   initialPagination: PaginationInfoType,
   initialPaintings: PaintingCardInfoType[],
   paintingsPerPage: number,
-  query?: string
+  query?: string,
+  validationScheme?: Yup.Schema
 ) {
   const pagesCount = initialPagination.total_pages;
   const [currentPage, setCurrentPage] = useState(initialPagination.current_page);
@@ -18,13 +20,15 @@ export function usePagination(
   useEffect(() => {
     if (currentPage === initialPagination.current_page && isInitial) return;
     async function fetchPaintings() {
-      const response = await fetch(`${getBaseApiUrl(search, paintingsPerPage)}&page=${currentPage}`);
-      const data = await response.json();
+      const data = await fetchData({
+        url: `${getBaseApiUrl(search, paintingsPerPage)}&page=${currentPage}`,
+        validationScheme,
+      });
       setCurrentPaintings(data.data);
     }
 
     fetchPaintings();
-  }, [currentPage, paintingsPerPage, initialPagination.current_page, isInitial, query, search]);
+  }, [currentPage, paintingsPerPage, initialPagination.current_page, isInitial, query, search, validationScheme]);
 
   function handleNextPage() {
     if (currentPage < pagesCount) {

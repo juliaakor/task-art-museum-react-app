@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 
+import { fetchData } from '@api/index';
 import { Card, CardList, Loader, Search, Section } from '@components/index';
 import { API } from '@constants/api';
 import { CardWrapper, PageHeading, TextHighlightWrapper } from '@styles/index';
 import { PaintingCardInfoType, PaintingsListType } from '@type/api';
+import { PaintingsListSchema } from '@validation/index';
 
 import { CardListWrapper, SearchWrapper } from './styled';
 
@@ -28,13 +30,12 @@ export function HomePage() {
 
   useEffect(() => {
     async function getData(limit = 3) {
-      const response = await fetch(`${API.baseURL}?limit=${limit}`);
-      const data = await response.json();
+      const data = await fetchData({ url: `${API.baseURL}?limit=${limit}`, validationScheme: PaintingsListSchema });
 
       return data;
     }
 
-    async function fetchData() {
+    async function getAllPageData() {
       const data = await getData();
       setData(data);
 
@@ -42,7 +43,7 @@ export function HomePage() {
       setRest(restData);
     }
 
-    fetchData();
+    getAllPageData();
   }, []);
 
   return (
@@ -60,7 +61,11 @@ export function HomePage() {
       </SearchWrapper>
       <Section info="Topics for you" title="Our special gallery">
         <CardListWrapper>
-          {data ? <CardList data={data.data} pagination={data.pagination} /> : <Loader />}
+          {data ? (
+            <CardList data={data.data} pagination={data.pagination} validationSchema={PaintingsListSchema} />
+          ) : (
+            <Loader />
+          )}
         </CardListWrapper>
       </Section>
       <Section info="Here some more" title="Other works for you">

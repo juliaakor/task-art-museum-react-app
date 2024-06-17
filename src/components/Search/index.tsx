@@ -2,12 +2,13 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Schema } from 'yup';
 
-import { getBaseApiUrl } from '@api/index';
+import { fetchData, getBaseApiUrl } from '@api/index';
 import { Input } from '@components/common';
 import { SearchIcon } from '@components/Icons';
 import { CardList } from '@components/index';
 import { useDebounce } from '@hooks/index';
 import { PaintingsListType } from '@type/api';
+import { searchArtworkListSchema } from '@validation/index';
 
 import { CardListWrapper, FieldWrapper, SearchError, SearchWrapper, SubmitIcon } from './styled';
 
@@ -33,8 +34,7 @@ export function Search({ children, initialValues, placeholder, validationSchema 
   useEffect(() => {
     if (!query) return;
     async function fetchPaintings() {
-      const response = await fetch(`${getBaseApiUrl(query)}`);
-      const data = await response.json();
+      const data = await fetchData({ url: `${getBaseApiUrl(query)}`, validationScheme: searchArtworkListSchema });
       setSearchResults({ ...data, key: Date.now() });
     }
 
@@ -84,6 +84,7 @@ export function Search({ children, initialValues, placeholder, validationSchema 
                 isFullSize={false}
                 pagination={searchResults.pagination}
                 query={query}
+                validationSchema={searchArtworkListSchema}
               />
             )}
           </CardListWrapper>
