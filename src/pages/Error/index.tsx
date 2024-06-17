@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ErrorLayout } from '@components/ErrorLayout';
+import { ErrorLayout } from '@components/index';
 import { ROUTES } from '@constants/routes';
 
 export function ErrorPage() {

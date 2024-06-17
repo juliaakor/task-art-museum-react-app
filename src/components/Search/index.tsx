@@ -5,7 +5,7 @@ import { Schema } from 'yup';
 import { fetchData, getBaseApiUrl } from '@api/index';
 import { Input } from '@components/common';
 import { SearchIcon } from '@components/Icons';
-import { CardList } from '@components/index';
+import { CardList, ErrorBoundary } from '@components/index';
 import { useDebounce } from '@hooks/index';
 import { PaintingsListType } from '@type/api';
 import { searchArtworkListSchema } from '@validation/index';
@@ -77,16 +77,18 @@ export function Search({ children, initialValues, placeholder, validationSchema 
             {children}
           </SearchWrapper>
           <CardListWrapper>
-            {searchResults && (
-              <CardList
-                key={searchResults.key}
-                data={searchResults.data}
-                isFullSize={false}
-                pagination={searchResults.pagination}
-                query={query}
-                validationSchema={searchArtworkListSchema}
-              />
-            )}
+            <ErrorBoundary>
+              {searchResults && (
+                <CardList
+                  key={searchResults.key}
+                  data={searchResults.data}
+                  isFullSize={false}
+                  pagination={searchResults.pagination}
+                  query={query}
+                  validationSchema={searchArtworkListSchema}
+                />
+              )}
+            </ErrorBoundary>
           </CardListWrapper>
         </Form>
       )}

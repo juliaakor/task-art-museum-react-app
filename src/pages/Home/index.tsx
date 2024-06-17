@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 
 import { fetchData } from '@api/index';
-import { Card, CardList, Loader, Search, Section } from '@components/index';
+import { Card, CardList, ErrorBoundary, Loader, Search, Section } from '@components/index';
 import { API } from '@constants/api';
 import { CardWrapper, PageHeading, TextHighlightWrapper } from '@styles/index';
 import { PaintingCardInfoType, PaintingsListType } from '@type/api';
@@ -61,19 +61,23 @@ export function HomePage() {
       </SearchWrapper>
       <Section info="Topics for you" title="Our special gallery">
         <CardListWrapper>
-          {data ? (
-            <CardList data={data.data} pagination={data.pagination} validationSchema={PaintingsListSchema} />
-          ) : (
-            <Loader />
-          )}
+          <ErrorBoundary>
+            {data ? (
+              <CardList data={data.data} pagination={data.pagination} validationSchema={PaintingsListSchema} />
+            ) : (
+              <Loader />
+            )}
+          </ErrorBoundary>
         </CardListWrapper>
       </Section>
       <Section info="Here some more" title="Other works for you">
         <CardWrapper>
-          {rest &&
-            rest.data.map((painting: PaintingCardInfoType) => (
-              <Card isFullSize={false} key={painting.id} painting={painting} />
-            ))}
+          <ErrorBoundary>
+            {rest &&
+              rest.data.map((painting: PaintingCardInfoType) => (
+                <Card isFullSize={false} key={painting.id} painting={painting} />
+              ))}
+          </ErrorBoundary>
         </CardWrapper>
       </Section>
     </>
