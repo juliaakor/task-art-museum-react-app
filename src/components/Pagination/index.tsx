@@ -14,7 +14,7 @@ interface PaginationProps {
   pagesCount: number;
 }
 
-export const Pagination = ({ onNextPage: handleNextPageClick, onPageClick, page, pagesCount }: PaginationProps) => {
+export function Pagination({ onNextPage: handleNextPageClick, onPageClick, page, pagesCount }: PaginationProps) {
   const startPage = Math.max(1, Math.min(page - 2, pagesCount - 4));
   const endPage = Math.min(pagesCount, startPage + 4);
 
@@ -25,14 +25,20 @@ export const Pagination = ({ onNextPage: handleNextPageClick, onPageClick, page,
 
   return (
     <PaginationItemsContainer>
-      {pageNumbers.map((pageNumber) => (
-        <PaginationItem $active={pageNumber === page} key={pageNumber} onClick={() => onPageClick(pageNumber)}>
-          {pageNumber}
-        </PaginationItem>
-      ))}
-      <ArrowButton onClick={() => handleNextPageClick()}>
+      {pageNumbers.map((pageNumber) => {
+        function handlePageClick() {
+          onPageClick(pageNumber);
+        }
+
+        return (
+          <PaginationItem $active={pageNumber === page} key={pageNumber} onClick={handlePageClick}>
+            {pageNumber}
+          </PaginationItem>
+        );
+      })}
+      <ArrowButton onClick={handleNextPageClick}>
         <ArrowIcon />
       </ArrowButton>
     </PaginationItemsContainer>
   );
-};
+}

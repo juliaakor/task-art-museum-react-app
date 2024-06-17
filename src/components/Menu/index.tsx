@@ -12,18 +12,18 @@ interface MenuProps {
   isHomePage: boolean;
 }
 
-export const Menu = ({ isHomePage }: MenuProps) => {
+export function Menu({ isHomePage }: MenuProps) {
   const theme = useTheme();
   const { isMenuOpen, isMobile, toggleMenu } = useToggleMenu();
 
-  const handleToggleMenu = () => {
+  function handleToggleMenu() {
     toggleMenu((prevState) => !prevState);
-  };
+  }
 
   return (
     <>
       {isMobile && (
-        <BurgerMenuButton onClick={() => toggleMenu(!isMenuOpen)}>
+        <BurgerMenuButton onClick={handleToggleMenu}>
           <BurgerMenuIcon />
         </BurgerMenuButton>
       )}
@@ -42,4 +42,4 @@ export const Menu = ({ isHomePage }: MenuProps) => {
       )}
     </>
   );
-};
+}

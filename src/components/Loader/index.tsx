@@ -2,7 +2,7 @@ import React from 'react';
 
 import { LoaderContainer } from './styled';
 
-export const Loader = () => {
+export function Loader() {
   return (
     <LoaderContainer>
       <div></div>
@@ -15,4 +15,4 @@ export const Loader = () => {
       <div></div>
     </LoaderContainer>
   );
-};
+}

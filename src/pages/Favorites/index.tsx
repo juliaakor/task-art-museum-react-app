@@ -10,7 +10,7 @@ import { PaintingCardInfoType } from '@type/api';
 
 import { TextHighlightWrapper } from './styled';
 
-export const FavoritesPage = () => {
+export function FavoritesPage() {
   const theme = useTheme();
   const paintings = useSelector((state: RootState) => state.paintings);
 
@@ -34,4 +34,4 @@ export const FavoritesPage = () => {
       </Section>
     </>
   );
-};
+}

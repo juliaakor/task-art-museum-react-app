@@ -8,7 +8,7 @@ interface SectionProps {
   title: string;
 }
 
-export const Section = ({ children, info, title, ...props }: SectionProps) => {
+export function Section({ children, info, title, ...props }: SectionProps) {
   return (
     <SectionContainer {...props}>
       <SubSectionName>{info}</SubSectionName>
@@ -16,4 +16,4 @@ export const Section = ({ children, info, title, ...props }: SectionProps) => {
       {children}
     </SectionContainer>
   );
-};
+}

@@ -10,7 +10,7 @@ interface MenuItemProps {
   handleMenuItemClick?: () => void;
 }
 
-export const MenuItem = ({ handleMenuItemClick, href, icon, label, ...props }: MenuItemProps) => {
+export function MenuItem({ handleMenuItemClick, href, icon, label, ...props }: MenuItemProps) {
   return (
     <NavLink to={href} onClick={handleMenuItemClick} {...props}>
       <Container>
@@ -19,4 +19,4 @@ export const MenuItem = ({ handleMenuItemClick, href, icon, label, ...props }: M
       </Container>
     </NavLink>
   );
-};
+}

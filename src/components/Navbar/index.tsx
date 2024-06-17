@@ -6,7 +6,7 @@ import { Menu } from '@components/index';
 
 import { Header } from './styled';
 
-export const Navbar = () => {
+export function Navbar() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -16,4 +16,4 @@ export const Navbar = () => {
       <Menu isHomePage={isHomePage} />
     </Header>
   );
-};
+}

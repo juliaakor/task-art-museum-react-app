@@ -14,7 +14,7 @@ interface ErrorLayoutProps {
   title: string;
 }
 
-export const ErrorLayout = ({ children, message, redirect, redirectLabel, title }: ErrorLayoutProps) => {
+export function ErrorLayout({ children, message, redirect, redirectLabel, title }: ErrorLayoutProps) {
   const theme = useTheme();
 
   return (
@@ -29,4 +29,4 @@ export const ErrorLayout = ({ children, message, redirect, redirectLabel, title 
       </ErrorDescription>
     </ErrorContainer>
   );
-};
+}

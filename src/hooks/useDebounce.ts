@@ -5,7 +5,7 @@ interface DebounceProps<T> {
   delay: number;
 }
 
-export const useDebounce = <T>({ cb, delay }: DebounceProps<T>) => {
+export function useDebounce<T>({ cb, delay }: DebounceProps<T>) {
   const callbackRef = useRef(cb);
   const [debouncedValue, setDebouncedValue] = useState<T | null>(null);
 
@@ -16,18 +16,18 @@ export const useDebounce = <T>({ cb, delay }: DebounceProps<T>) => {
   useEffect(() => {
     if (debouncedValue === null) return;
 
-    const handler = setTimeout(() => {
+    const handler = setTimeout(function () {
       callbackRef.current(debouncedValue);
     }, delay);
 
-    return () => {
+    return function () {
       clearTimeout(handler);
     };
   }, [debouncedValue, delay]);
 
-  const debouncedCallback = useCallback((value: T) => {
+  const debouncedCallback = useCallback(function (value: T) {
     setDebouncedValue(value);
   }, []);
 
   return debouncedCallback;
-};
+}

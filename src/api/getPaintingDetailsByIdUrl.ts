@@ -1,3 +1,5 @@
 import { API } from '@constants/api';
 
-export const getPaintingDetailsByIdUrl = (id: string | undefined) => `${API.baseURL}/${id}`;
+export function getPaintingDetailsByIdUrl(id: string | undefined) {
+  return `${API.baseURL}/${id}`;
+}
