@@ -30,6 +30,7 @@ export interface FullPaintingInfo {
 }
 
 export interface PaintingsListType {
+  key?: React.Key | null | undefined;
   data: Array<PaintingCardInfoType>;
   isFullSize?: boolean;
   pagination: PaginationInfoType;

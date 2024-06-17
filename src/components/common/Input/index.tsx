@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { InputHTMLAttributes, ReactNode } from 'react';
 
 import { StyledInput } from './styled';
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   children?: ReactNode;
   placeholder?: string;
   value: number | readonly string[] | string | undefined;
