@@ -6,10 +6,10 @@ import { PaintingsListType } from '@type/api';
 
 import { CardListContainer, Info } from './styled';
 
-export function CardList({ data, isFullSize, pagination, query }: PaintingsListType) {
+export function CardList({ data, isFullSize, pagination, query, validationSchema }: PaintingsListType) {
   const paintingsPerPage = 3;
   const { currentPage, currentPaintings, handleNextPage, handlePageClick, handlePrevPage, pagesCount, setSearch } =
-    usePagination(pagination, data, paintingsPerPage, query);
+    usePagination(pagination, data, paintingsPerPage, query, validationSchema);
 
   useEffect(() => {
     setSearch(query);

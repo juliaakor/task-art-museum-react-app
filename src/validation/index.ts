@@ -15,7 +15,7 @@ export const artworkShortSchema = Yup.object().shape({
 export const PaginationInfoSchema = Yup.object().shape({
   current_page: isRequiredNumber,
   limit: isRequiredNumber,
-  next_url: isRequiredString,
+  next_url: isRequiredString.optional(),
   offset: isRequiredNumber,
   total: isRequiredNumber,
   total_pages: isRequiredNumber,
@@ -38,6 +38,23 @@ export const FullPaintingInfoSchema = Yup.object().shape({
   is_public_domain: isRequiredBoolean,
   place_of_origin: isRequiredString,
   title: isRequiredString,
+});
+
+export const PaintingsDetailsSchema = Yup.object().shape({
+  data: FullPaintingInfoSchema,
+});
+
+export const searchArtworkSchema = Yup.object().shape({
+  artist_title: isRequiredString.optional(),
+  id: isRequiredNumber,
+  image_id: isRequiredString.optional(),
+  is_public_domain: isRequiredBoolean.optional(),
+  title: isRequiredString.optional(),
+});
+
+export const searchArtworkListSchema = Yup.object().shape({
+  data: Yup.array(searchArtworkSchema),
+  pagination: PaginationInfoSchema,
 });
 
 export type FullPaintingInfoType = Yup.InferType<typeof FullPaintingInfoSchema>;
