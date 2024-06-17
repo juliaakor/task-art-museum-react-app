@@ -20,7 +20,7 @@ import {
   YearsLabel,
 } from './styled';
 
-export const DetailInfoPage = () => {
+export function DetailInfoPage() {
   const theme = useTheme();
   const { id: stringId } = useParams();
   const id = Number(stringId);
@@ -30,7 +30,7 @@ export const DetailInfoPage = () => {
   const [data, setData] = useState<FullPaintingInfoType>();
 
   useEffect(() => {
-    const getData = async () => {
+    async function getData() {
       try {
         const response = await fetch(`${getPaintingDetailsByIdUrl(stringId)}`);
         const fetchedData = await response.json();
@@ -41,12 +41,12 @@ export const DetailInfoPage = () => {
       } catch (error) {
         navigate(ROUTES.ERROR_OCCURRED);
       }
-    };
+    }
 
     getData();
   }, [id, navigate, stringId]);
 
-  const handleBookmarkClick = (event: React.MouseEvent) => {
+  function handleBookmarkClick(event: React.MouseEvent) {
     event.stopPropagation();
     isBookmarked
       ? toggleBookmark(id)
@@ -57,7 +57,7 @@ export const DetailInfoPage = () => {
           is_public_domain: data?.is_public_domain || false,
           title: data?.title || '',
         });
-  };
+  }
 
   return (
     <DetailsContainer>
@@ -83,4 +83,4 @@ export const DetailInfoPage = () => {
       )}
     </DetailsContainer>
   );
-};
+}

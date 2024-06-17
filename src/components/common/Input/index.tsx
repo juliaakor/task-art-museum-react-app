@@ -8,10 +8,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   value: number | readonly string[] | string | undefined;
 }
 
-export const Input = ({ children, placeholder, value, ...props }: InputProps) => {
+export function Input({ children, placeholder, value, ...props }: InputProps) {
   return (
     <StyledInput placeholder={placeholder} value={value} {...props}>
       {children}
     </StyledInput>
   );
-};
+}

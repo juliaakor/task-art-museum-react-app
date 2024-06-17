@@ -8,7 +8,7 @@ import { themes } from '@constants/css';
 import GlobalStyle from './global';
 import { router } from './router';
 
-export const App = () => {
+export function App() {
   return (
     <ThemeProvider theme={themes['light']}>
       <BrowserRouter>
@@ -23,4 +23,4 @@ export const App = () => {
       </BrowserRouter>
     </ThemeProvider>
   );
-};
+}

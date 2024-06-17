@@ -4,7 +4,7 @@ import { PaintingCardInfoType } from '@type/api';
 
 import { DELETE_PAINTING, LOAD_PAINTINGS, PaintingActionTypes, SAVE_PAINTING } from '../actions';
 
-const paintingsReducer = (state: PaintingCardInfoType[] = [], action: PaintingActionTypes) => {
+function paintingsReducer(state: PaintingCardInfoType[] = [], action: PaintingActionTypes) {
   switch (action.type) {
     case SAVE_PAINTING:
       return state.findIndex((painting) => painting.id === action.payload.id) !== -1
@@ -17,7 +17,7 @@ const paintingsReducer = (state: PaintingCardInfoType[] = [], action: PaintingAc
     default:
       return state;
   }
-};
+}
 
 const rootReducer = combineReducers({
   paintings: paintingsReducer,

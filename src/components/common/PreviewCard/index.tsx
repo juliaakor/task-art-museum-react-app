@@ -37,26 +37,26 @@ const MiniSizeCardDefaults = {
   $size: '24rem',
 };
 
-export const PreviewCard = ({
+export function PreviewCard({
   artist_title,
   id,
   image_id,
   is_public_domain,
   isFullSize = true,
   title,
-}: PreviewCardProps) => {
+}: PreviewCardProps) {
   const theme = useTheme();
   const [isImageLoaded, setisImageLoaded] = useState(true);
   const [isBookmarked, toggleBookmark] = useBookmarkStatus(id);
 
-  const handleImgError = () => {
+  function handleImgError() {
     setisImageLoaded(false);
-  };
+  }
 
-  const handleBookmarkClick = (event: React.MouseEvent) => {
+  function handleBookmarkClick(event: React.MouseEvent) {
     event.preventDefault();
     isBookmarked ? toggleBookmark(id) : toggleBookmark({ artist_title, id, image_id, is_public_domain, title });
-  };
+  }
 
   return (
     <PreviewCardContainer {...(isFullSize ? FullSizeCardDefaults : MiniSizeCardDefaults)}>
@@ -84,4 +84,4 @@ export const PreviewCard = ({
       </IconButtonWrapper>
     </PreviewCardContainer>
   );
-};
+}

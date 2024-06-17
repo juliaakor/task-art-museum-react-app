@@ -12,7 +12,7 @@ interface CardProps {
   painting: PaintingCardInfoType;
 }
 
-export const Card = ({ isFullSize = true, painting }: CardProps) => {
+export function Card({ isFullSize = true, painting }: CardProps) {
   return (
     <Link to={`/${painting.id}`}>
       <CardContainer>
@@ -21,4 +21,4 @@ export const Card = ({ isFullSize = true, painting }: CardProps) => {
       </CardContainer>
     </Link>
   );
-};
+}

@@ -21,26 +21,26 @@ const initialValues: SearchFormValues = {
   query: '',
 };
 
-export const HomePage = () => {
+export function HomePage() {
   const theme = useTheme();
   const [data, setData] = useState<PaintingsListType | null>(null);
   const [rest, setRest] = useState<PaintingsListType | null>(null);
 
   useEffect(() => {
-    const getData = async (limit = 3) => {
+    async function getData(limit = 3) {
       const response = await fetch(`${API.baseURL}?limit=${limit}`);
       const data = await response.json();
 
       return data;
-    };
+    }
 
-    const fetchData = async () => {
+    async function fetchData() {
       const data = await getData();
       setData(data);
 
       const restData = await getData(9);
       setRest(restData);
-    };
+    }
 
     fetchData();
   }, []);
@@ -73,4 +73,4 @@ export const HomePage = () => {
       </Section>
     </>
   );
-};
+}

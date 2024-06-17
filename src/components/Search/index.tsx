@@ -22,51 +22,46 @@ interface SearchFormValues {
   query: string;
 }
 
-export const Search = ({ children, initialValues, placeholder, validationSchema }: SearchProps) => {
+export function Search({ children, initialValues, placeholder, validationSchema }: SearchProps) {
   const [searchResults, setSearchResults] = useState<PaintingsListType>();
   const [query, setQuery] = useState('');
 
-  const handleSearch = useCallback((query: string) => {
+  const handleSearch = useCallback(function (query: string) {
     setQuery(query);
   }, []);
 
   useEffect(() => {
     if (!query) return;
-    const fetchPaintings = async () => {
+    async function fetchPaintings() {
       const response = await fetch(`${getBaseApiUrl(query)}`);
       const data = await response.json();
       setSearchResults({ ...data, key: Date.now() });
-    };
+    }
 
     fetchPaintings();
   }, [query]);
 
   const debouncedSearch = useDebounce({ cb: handleSearch, delay: 300 });
 
+  function handleOnSubmit(values: SearchFormValues) {
+    handleSearch(values.query);
+  }
+
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={(values) => {
-        handleSearch(values.query);
-      }}
-      validationSchema={validationSchema}
-    >
+    <Formik initialValues={initialValues} onSubmit={handleOnSubmit} validationSchema={validationSchema}>
       {({ handleChange, handleSubmit }) => (
         <Form onSubmit={handleSubmit}>
           <SearchWrapper>
             <FieldWrapper>
               <Field name="query">
-                {({ field }: { field: React.InputHTMLAttributes<HTMLInputElement> }) => (
-                  <Input
-                    {...field}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      handleChange(e);
-                      debouncedSearch(e.target.value);
-                    }}
-                    placeholder={placeholder}
-                    value={field.value}
-                  />
-                )}
+                {({ field }: { field: React.InputHTMLAttributes<HTMLInputElement> }) => {
+                  function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
+                    handleChange(e);
+                    debouncedSearch(e.target.value);
+                  }
+
+                  return <Input {...field} onChange={handleOnChange} placeholder={placeholder} value={field.value} />;
+                }}
               </Field>
               <SubmitIcon type="submit">
                 <SearchIcon size={18} />
@@ -96,4 +91,4 @@ export const Search = ({ children, initialValues, placeholder, validationSchema 
       )}
     </Formik>
   );
-};
+}

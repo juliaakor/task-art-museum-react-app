@@ -3,7 +3,7 @@ import React from 'react';
 import { ErrorLayout } from '@components/ErrorLayout';
 import { ROUTES } from '@constants/routes';
 
-export const NotFoundPage = () => {
+export function NotFoundPage() {
   return (
     <ErrorLayout
       title="Page was not found"
@@ -12,4 +12,4 @@ export const NotFoundPage = () => {
       redirectLabel="Home"
     />
   );
-};
+}

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
-export const useToggleMenu = (isOpen = false, mobileBreakpoint = 500) => {
+export function useToggleMenu(isOpen = false, mobileBreakpoint = 500) {
   const [isMenuOpen, toggleMenu] = useState(isOpen);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= mobileBreakpoint);
 
   useEffect(() => {
-    const handleResize = () => {
+    function handleResize() {
       setIsMobile(window.innerWidth <= mobileBreakpoint);
-    };
+    }
 
     window.addEventListener('resize', handleResize);
 
@@ -22,4 +22,4 @@ export const useToggleMenu = (isOpen = false, mobileBreakpoint = 500) => {
   }, [isMenuOpen, isMobile]);
 
   return { isMenuOpen, isMobile, setIsMobile, toggleMenu };
-};
+}

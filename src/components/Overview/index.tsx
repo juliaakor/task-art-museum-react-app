@@ -6,13 +6,13 @@ import { FullPaintingInfoType } from '@validation/index';
 
 import { PropertyWrapper } from './styled';
 
-export const Overview = ({
+export function Overview({
   credit_line,
   dimensions,
   gallery_title,
   is_public_domain,
   place_of_origin,
-}: FullPaintingInfoType) => {
+}: FullPaintingInfoType) {
   const theme = useTheme();
 
   return (
@@ -34,4 +34,4 @@ export const Overview = ({
       <PropertyWrapper>{is_public_domain ? 'Public' : 'Private'}</PropertyWrapper>
     </div>
   );
-};
+}
