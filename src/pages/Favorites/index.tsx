@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useTheme } from 'styled-components';
 
 import { BookmarkIcon } from '@components/Icons';
-import { Card, Section } from '@components/index';
+import { Card, ErrorBoundary, Section } from '@components/index';
 import { RootState } from '@store/reducers';
 import { CardWrapper, PageHeading, TextHighlightWrapper as TextHighlight } from '@styles/index';
 import { PaintingCardInfoType } from '@type/api';
@@ -27,9 +27,11 @@ export function FavoritesPage() {
       </PageHeading>
       <Section info="Saved by you" title="Your favorites list">
         <CardWrapper>
-          {paintings.map((painting: PaintingCardInfoType) => (
-            <Card isFullSize={false} key={painting.id} painting={painting} />
-          ))}
+          <ErrorBoundary>
+            {paintings.map((painting: PaintingCardInfoType) => (
+              <Card isFullSize={false} key={painting.id} painting={painting} />
+            ))}
+          </ErrorBoundary>
         </CardWrapper>
       </Section>
     </>
