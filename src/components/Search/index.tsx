@@ -31,15 +31,15 @@ export const Search = ({ children, initialValues, placeholder, validationSchema 
   }, []);
 
   useEffect(() => {
-    if (!query || searchResults) return;
+    if (!query) return;
     const fetchPaintings = async () => {
       const response = await fetch(`${getBaseApiUrl(query)}`);
       const data = await response.json();
-      setSearchResults(data);
+      setSearchResults({ ...data, key: Date.now() });
     };
 
     fetchPaintings();
-  }, [query, searchResults]);
+  }, [query]);
 
   const debouncedSearch = useDebounce({ cb: handleSearch, delay: 300 });
 
@@ -56,15 +56,15 @@ export const Search = ({ children, initialValues, placeholder, validationSchema 
           <SearchWrapper>
             <FieldWrapper>
               <Field name="query">
-                {({ field }: { field: React.InputHTMLAttributes<SearchProps> }) => (
+                {({ field }: { field: React.InputHTMLAttributes<HTMLInputElement> }) => (
                   <Input
+                    {...field}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                       handleChange(e);
                       debouncedSearch(e.target.value);
                     }}
                     placeholder={placeholder}
                     value={field.value}
-                    {...field}
                   />
                 )}
               </Field>
@@ -84,6 +84,7 @@ export const Search = ({ children, initialValues, placeholder, validationSchema 
           <CardListWrapper>
             {searchResults && (
               <CardList
+                key={searchResults.key}
                 data={searchResults.data}
                 isFullSize={false}
                 pagination={searchResults.pagination}
