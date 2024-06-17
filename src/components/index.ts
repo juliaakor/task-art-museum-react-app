@@ -1,5 +1,6 @@
 export { Card } from './Card';
 export { CardList } from './CardList';
+export { ErrorLayout } from './ErrorLayout';
 export { Footer } from './Footer';
 export { Loader } from './Loader';
 export { Menu } from './Menu';
