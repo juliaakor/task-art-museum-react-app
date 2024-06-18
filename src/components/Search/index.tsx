@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { Schema } from 'yup';
 
 import { fetchData, getBaseApiUrl } from '@api/index';
@@ -23,6 +23,8 @@ interface SearchFormValues {
   query: string;
 }
 
+const MemoizedCardList = memo(CardList);
+
 export function Search({ children, initialValues, placeholder, validationSchema }: SearchProps) {
   const [searchResults, setSearchResults] = useState<PaintingsListType>();
   const [query, setQuery] = useState('');
@@ -32,24 +34,31 @@ export function Search({ children, initialValues, placeholder, validationSchema 
     setQuery(query);
   }, []);
 
-  useEffect(() => {
-    if (!query) return;
-    async function fetchPaintings() {
+  const fetchPaintings = useCallback(
+    async function () {
       const data = await fetchData({
         url: `${getBaseApiUrl(query)}${params}`,
         validationScheme: searchArtworkListSchema,
       });
       setSearchResults({ ...data, key: Date.now() });
-    }
+    },
+    [params, query]
+  );
+
+  useEffect(() => {
+    if (!query) return;
 
     fetchPaintings();
-  }, [params, query]);
+  }, [fetchPaintings, params, query]);
 
   const debouncedSearch = useDebounce({ cb: handleSearch, delay: 300 });
 
-  function handleOnSubmit(values: SearchFormValues) {
-    handleSearch(values.query);
-  }
+  const handleOnSubmit = useCallback(
+    function (values: SearchFormValues) {
+      handleSearch(values.query);
+    },
+    [handleSearch]
+  );
 
   const handleSearchToolbarChange = useCallback(function (search: string) {
     setParams(search);
@@ -88,7 +97,7 @@ export function Search({ children, initialValues, placeholder, validationSchema 
           <CardListWrapper>
             <ErrorBoundary>
               {searchResults && (
-                <CardList
+                <MemoizedCardList
                   key={searchResults.key}
                   data={searchResults.data}
                   isFullSize={false}
