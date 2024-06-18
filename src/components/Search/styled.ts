@@ -13,9 +13,9 @@ export const SubmitIcon = styled.button`
   border: 0;
   background: transparent;
   border-radius: 50%;
-  padding: var(--c-spacing-xx-small);
+  padding: var(--c-spacing-x-small);
   position: absolute;
-  right: var(--c-spacing-xxx-small);
+  right: var(--c-spacing-xx-medium);
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;

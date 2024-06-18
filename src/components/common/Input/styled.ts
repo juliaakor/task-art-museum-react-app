@@ -1,11 +1,9 @@
 import { styled } from 'styled-components';
 
+import { DefaultInput } from '@styles/index';
+
 export const StyledInput = styled.input`
-  background: ${(props) => props.theme.inputBackground};
-  border-radius: 16px;
-  padding: var(--c-spacing-medium);
-  border: 0;
-  font-size: var(--c-font-size-1);
+  ${DefaultInput}
   width: 100%;
 
   &::placeholder {

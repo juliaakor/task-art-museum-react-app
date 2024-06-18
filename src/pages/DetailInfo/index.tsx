@@ -52,7 +52,7 @@ export function DetailInfoPage() {
       : toggleBookmark({
           artist_title: data?.artist_title || '',
           id,
-          image_id: data?.image_id || '',
+          image_id: data?.image_id || (data?.alt_image_ids ? data.alt_image_ids[0] : ''),
           is_public_domain: data?.is_public_domain || false,
           title: data?.title || '',
         });
@@ -63,7 +63,9 @@ export function DetailInfoPage() {
       {data ? (
         <>
           <PaintingWrapper>
-            <PaintingImage src={getPaintingImageUrl(data.image_id)} />
+            <PaintingImage
+              src={getPaintingImageUrl(data.image_id || (data.alt_image_ids ? data.alt_image_ids[0] : ''))}
+            />
             <ButtonWrapper onClick={handleBookmarkClick}>
               <BookmarkIcon color={isBookmarked ? `${theme.buttonActiveIcon}` : `${theme.textHighlight}`} />
             </ButtonWrapper>
@@ -72,7 +74,7 @@ export function DetailInfoPage() {
             <div>
               <SubHeading>{data.title}</SubHeading>
               <ArtistName>{data.artist_title}</ArtistName>
-              <YearsLabel>{data.fiscal_year}</YearsLabel>
+              <YearsLabel>{data.date_start}</YearsLabel>
             </div>
             <Overview {...data} />
           </OverviewContainer>
