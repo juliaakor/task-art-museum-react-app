@@ -10,4 +10,5 @@ export { Navbar } from './Navbar';
 export { Overview } from './Overview';
 export { Pagination } from './Pagination';
 export { Search } from './Search';
+export { SearchToolbar } from './SearchToolbar';
 export { Section } from './Section';

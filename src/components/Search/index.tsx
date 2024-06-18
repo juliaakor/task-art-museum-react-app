@@ -5,7 +5,7 @@ import { Schema } from 'yup';
 import { fetchData, getBaseApiUrl } from '@api/index';
 import { Input } from '@components/common';
 import { SearchIcon } from '@components/Icons';
-import { CardList, ErrorBoundary } from '@components/index';
+import { CardList, ErrorBoundary, SearchToolbar } from '@components/index';
 import { useDebounce } from '@hooks/index';
 import { PaintingsListType } from '@type/api';
 import { searchArtworkListSchema } from '@validation/index';
@@ -26,6 +26,7 @@ interface SearchFormValues {
 export function Search({ children, initialValues, placeholder, validationSchema }: SearchProps) {
   const [searchResults, setSearchResults] = useState<PaintingsListType>();
   const [query, setQuery] = useState('');
+  const [params, setParams] = useState('');
 
   const handleSearch = useCallback(function (query: string) {
     setQuery(query);
@@ -34,18 +35,25 @@ export function Search({ children, initialValues, placeholder, validationSchema 
   useEffect(() => {
     if (!query) return;
     async function fetchPaintings() {
-      const data = await fetchData({ url: `${getBaseApiUrl(query)}`, validationScheme: searchArtworkListSchema });
+      const data = await fetchData({
+        url: `${getBaseApiUrl(query)}${params}`,
+        validationScheme: searchArtworkListSchema,
+      });
       setSearchResults({ ...data, key: Date.now() });
     }
 
     fetchPaintings();
-  }, [query]);
+  }, [params, query]);
 
   const debouncedSearch = useDebounce({ cb: handleSearch, delay: 300 });
 
   function handleOnSubmit(values: SearchFormValues) {
     handleSearch(values.query);
   }
+
+  const handleSearchToolbarChange = useCallback(function (search: string) {
+    setParams(search);
+  }, []);
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleOnSubmit} validationSchema={validationSchema}>
@@ -66,6 +74,7 @@ export function Search({ children, initialValues, placeholder, validationSchema 
               <SubmitIcon type="submit">
                 <SearchIcon size={18} />
               </SubmitIcon>
+              <SearchToolbar setSearchQuery={handleSearchToolbarChange} />
             </FieldWrapper>
             <ErrorMessage
               component="div"
