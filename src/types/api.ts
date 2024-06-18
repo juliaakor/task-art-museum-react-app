@@ -17,20 +17,6 @@ export interface PaginationInfoType {
   total_pages: number;
 }
 
-export interface FullPaintingInfo {
-  artist_display: string;
-  artist_title: string;
-  credit_line: string;
-  date_display: string;
-  dimensions: string;
-  dimensions_detail: string;
-  gallery_title: string;
-  id: string;
-  is_public_domain: boolean;
-  place_of_origin: string;
-  title: string;
-}
-
 export interface PaintingsListType {
   key?: React.Key | null | undefined;
   data: Array<PaintingCardInfoType>;

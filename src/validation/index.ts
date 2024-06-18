@@ -27,14 +27,15 @@ export const PaintingsListSchema = Yup.object().shape({
 });
 
 export const FullPaintingInfoSchema = Yup.object().shape({
+  alt_image_ids: Yup.array(isRequiredString.nonNullable()),
   artist_display: isRequiredString,
   artist_title: isRequiredString,
   credit_line: isRequiredString,
+  date_start: isRequiredNumber,
   dimensions: isRequiredString,
-  fiscal_year: isRequiredNumber,
   gallery_title: isRequiredString,
   id: isRequiredString,
-  image_id: isRequiredString.nonNullable(),
+  image_id: isRequiredString,
   is_public_domain: isRequiredBoolean,
   place_of_origin: isRequiredString,
   title: isRequiredString,
