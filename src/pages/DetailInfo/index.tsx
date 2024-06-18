@@ -43,7 +43,7 @@ export function DetailInfoPage() {
     }
 
     getData();
-  }, [id, navigate, stringId]);
+  }, [navigate, stringId]);
 
   function handleBookmarkClick(event: React.MouseEvent) {
     event.stopPropagation();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 
@@ -10,6 +10,9 @@ import { PaintingCardInfoType, PaintingsListType } from '@type/api';
 import { PaintingsListSchema } from '@validation/index';
 
 import { CardListWrapper, SearchWrapper } from './styled';
+
+const MemoizedCard = memo(Card);
+const MemoizedCardList = memo(CardList);
 
 const validationSchema = Yup.object({
   query: Yup.string().required(),
@@ -23,27 +26,30 @@ const initialValues: SearchFormValues = {
   query: '',
 };
 
+async function getData(limit = 3) {
+  const data = await fetchData({ url: `${API.baseURL}?limit=${limit}`, validationScheme: PaintingsListSchema });
+
+  return data;
+}
+
 export function HomePage() {
   const theme = useTheme();
   const [data, setData] = useState<PaintingsListType | null>(null);
   const [rest, setRest] = useState<PaintingsListType | null>(null);
 
   useEffect(() => {
-    async function getData(limit = 3) {
-      const data = await fetchData({ url: `${API.baseURL}?limit=${limit}`, validationScheme: PaintingsListSchema });
-
-      return data;
-    }
-
     async function getAllPageData() {
       const data = await getData();
       setData(data);
+    }
 
+    async function getRestPageData() {
       const restData = await getData(9);
       setRest(restData);
     }
 
     getAllPageData();
+    getRestPageData();
   }, []);
 
   return (
@@ -63,7 +69,7 @@ export function HomePage() {
         <CardListWrapper>
           <ErrorBoundary>
             {data ? (
-              <CardList data={data.data} pagination={data.pagination} validationSchema={PaintingsListSchema} />
+              <MemoizedCardList data={data.data} pagination={data.pagination} validationSchema={PaintingsListSchema} />
             ) : (
               <Loader />
             )}
@@ -75,7 +81,7 @@ export function HomePage() {
           <ErrorBoundary>
             {rest &&
               rest.data.map((painting: PaintingCardInfoType) => (
-                <Card isFullSize={false} key={painting.id} painting={painting} />
+                <MemoizedCard isFullSize={false} key={painting.id} painting={painting} />
               ))}
           </ErrorBoundary>
         </CardWrapper>
