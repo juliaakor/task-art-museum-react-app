@@ -62,6 +62,10 @@ module.exports = merge(commonConfig, {
           from: 'public/logo512.png',
           to: '.',
         },
+        {
+          from: 'public/manifest.json',
+          to: '.',
+        },
       ],
     }),
   ],
