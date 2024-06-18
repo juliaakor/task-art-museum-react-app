@@ -5,6 +5,7 @@ export { ErrorLayout } from './ErrorLayout';
 export { Footer } from './Footer';
 export { Loader } from './Loader';
 export { Menu } from './Menu';
+export { Modal } from './Modal';
 export { Navbar } from './Navbar';
 export { Overview } from './Overview';
 export { Pagination } from './Pagination';
